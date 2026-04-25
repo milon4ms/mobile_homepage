@@ -3,150 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আমার হোমপেজ</title>
+    <title>মিলন ওয়েব ডিরেক্টরি</title>
     <style>
         :root {
-            --bg: #f0f2f5;
+            --bg: #f4f7f6;
             --card: #ffffff;
-            --text: #333;
-            --accent: #007bff;
+            --text: #2d3436;
+            --primary: #0984e3;
         }
         [data-theme="dark"] {
-            --bg: #121212;
-            --card: #1e1e1e;
-            --text: #e0e0e0;
+            --bg: #1e272e;
+            --card: #2f3542;
+            --text: #f1f2f6;
         }
         body {
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            margin: 0; padding: 0;
-            transition: 0.3s;
+            margin: 0; padding-bottom: 20px;
         }
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 8px 15px; background: var(--card); border-bottom: 1px solid #ddd;
+            padding: 10px 15px; background: var(--card); border-bottom: 1px solid #ddd;
+            position: sticky; top: 0; z-index: 100;
         }
         .header-title { font-size: 16px; font-weight: bold; }
 
-        /* ছোট ট্যাব এরিয়া */
+        /* ট্যাব স্টাইল */
         .tabs {
-            display: flex; gap: 5px; padding: 5px; background: #ddd; margin: 5px; border-radius: 5px;
+            display: flex; gap: 4px; padding: 5px; background: #dfe6e9; margin: 5px; border-radius: 8px;
         }
         .tab-btn {
-            flex: 1; padding: 6px; border: none; border-radius: 4px;
-            font-size: 12px; cursor: pointer; background: #eee;
+            flex: 1; padding: 8px; border: none; border-radius: 6px;
+            font-size: 12px; cursor: pointer; background: #f1f2f6; font-weight: bold;
         }
-        .tab-btn.active { background: var(--accent); color: white; }
+        .tab-btn.active { background: var(--primary); color: white; }
+        .add-link-btn { background: #27ae60 !important; color: white !important; flex: 0.5; }
 
-        /* গ্রিড লেআউট - প্রতি লাইনে ৫টি */
+        /* কন্টেন্ট এরিয়া */
         .content-section { display: none; padding: 10px; }
         .content-section.active { display: block; }
-        
-        .category-title { font-size: 14px; font-weight: bold; margin-bottom: 10px; color: var(--accent); }
-        
+
+        /* ক্যাটাগরি স্টাইল */
+        .category {
+            background: var(--card); border-radius: 10px; padding: 10px; margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .cat-title {
+            font-size: 13px; font-weight: bold; margin-bottom: 10px;
+            border-left: 3px solid var(--primary); padding-left: 8px; color: var(--primary);
+        }
+
+        /* গ্রিড - প্রতি লাইনে ৫টি */
         .link-grid {
             display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; text-align: center;
         }
         .link-item {
-            text-decoration: none; color: var(--text); font-size: 10px;
+            text-decoration: none; color: var(--text); font-size: 9px;
             display: flex; flex-direction: column; align-items: center;
         }
         .icon-box {
-            width: 45px; height: 45px; background: white; border-radius: 10px;
+            width: 42px; height: 42px; background: #f8f9fa; border-radius: 10px;
             display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 4px;
+            overflow: hidden;
         }
-        .icon-box img { width: 28px; height: 28px; }
+        .icon-box img { width: 24px; height: 24px; object-fit: contain; }
 
-        /* More Folder */
-        .more-content {
-            display: none; grid-template-columns: repeat(5, 1fr); gap: 10px; 
-            margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 8px;
+        /* More Folder Expansion */
+        .more-items {
+            display: none; grid-template-columns: repeat(5, 1fr); gap: 10px;
+            margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc;
         }
-        .more-content.show { display: grid; }
-        .more-btn { cursor: pointer; background: #cbd5e1; }
+        .more-items.show { display: grid; }
+        .more-btn-box { background: #ced4da; cursor: pointer; font-size: 16px; }
 
-        /* সেটিংস ও ডার্ক মোড আইকন */
-        .settings-btn { font-size: 20px; cursor: pointer; }
+        /* ডিলিট বাটন (শুধুমাত্র নিজস্ব সংগ্রহের জন্য) */
+        .delete-btn { font-size: 8px; color: red; margin-top: 2px; cursor: pointer; }
     </style>
 </head>
-<body id="body">
+<body id="mainBody">
 
 <header>
     <span onclick="history.back()">❮</span>
-    <div class="header-title">হোমপেজ 🏠</div>
-    <span class="settings-btn" onclick="toggleTheme()">⚙️</span>
+    <div class="header-title">আমার ডিরেক্টরি 🏠</div>
+    <span onclick="toggleTheme()" style="cursor:pointer">🌓</span>
 </header>
 
 <div class="tabs">
     <button class="tab-btn active" onclick="openTab(event, 'tab1')">ট্যাব ১</button>
     <button class="tab-btn" onclick="openTab(event, 'tab2')">ট্যাব ২</button>
     <button class="tab-btn" onclick="openTab(event, 'tab3')">ট্যাব ৩</button>
-    <button class="tab-btn" style="background: #28a745; color: white;" onclick="addLinkPrompt()">+</button>
+    <button class="tab-btn add-link-btn" onclick="addNewLink()">+ অ্যাড</button>
 </div>
 
 <div id="tab1" class="content-section active">
-    <div class="category-title">জনপ্রিয়</div>
-    <div class="link-grid" id="grid1">
-        <a href="https://google.com" class="link-item">
-            <div class="icon-box"><img src="https://www.google.com/favicon.ico"></div>
-            <span>Google</span>
-        </a>
-        <a href="https://facebook.com" class="link-item">
-            <div class="icon-box"><img src="https://www.facebook.com/favicon.ico"></div>
-            <span>Facebook</span>
-        </a>
-        <a href="https://youtube.com" class="link-item">
-            <div class="icon-box"><img src="https://www.youtube.com/favicon.ico"></div>
-            <span>YouTube</span>
-        </a>
-        <a href="https://whatsapp.com" class="link-item">
-            <div class="icon-box"><img src="https://static.whatsapp.net/rsrc.php/v3/yP/r/r_o_p0Vv09B.png"></div>
-            <span>WhatsApp</span>
-        </a>
-        <div class="link-item" onclick="toggleMore()">
-            <div class="icon-box more-btn">📂</div>
-            <span>More</span>
-        </div>
     </div>
 
-    <div id="moreItems" class="more-content">
-        <a href="https://wikipedia.org" class="link-item">
-            <div class="icon-box"><img src="https://en.wikipedia.org/favicon.ico"></div>
-            <span>Wiki</span>
-        </a>
-        <a href="https://gmail.com" class="link-item">
-            <div class="icon-box"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico"></div>
-            <span>Gmail</span>
-        </a>
-        <a href="https://twitter.com" class="link-item">
-            <div class="icon-box"><img src="https://abs.twimg.com/favicons/twitter.2.ico"></div>
-            <span>Twitter</span>
-        </a>
-        <a href="https://linkedin.com" class="link-item">
-            <div class="icon-box"><img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"></div>
-            <span>LinkedIn</span>
-        </a>
-    </div>
-</div>
+<div id="tab2" class="content-section"></div>
 
-<div id="tab2" class="content-section">
-    <div class="category-title">শিক্ষা</div>
-    <div class="link-grid">
-        </div>
-</div>
-
-<div id="tab3" class="content-section">
-    <div class="category-title">অন্যান্য</div>
-    <div class="link-grid">
-        </div>
-</div>
+<div id="tab3" class="content-section"></div>
 
 <script>
-    // ট্যাব পরিবর্তন লজিক
+    let currentTab = 'tab1';
+
+    // ১-৯ ক্যাটাগরির জন্য ডামি ডাটা (আপনি আপনার পছন্দমতো পরিবর্তন করতে পারবেন)
+    const sampleIcons = [
+        { name: 'Google', url: 'https://google.com', img: 'https://www.google.com/favicon.ico' },
+        { name: 'FB', url: 'https://facebook.com', img: 'https://www.facebook.com/favicon.ico' },
+        { name: 'YT', url: 'https://youtube.com', img: 'https://www.youtube.com/favicon.ico' },
+        { name: 'WA', url: 'https://whatsapp.com', img: 'https://static.whatsapp.net/rsrc.php/v3/yP/r/r_o_p0Vv09B.png' },
+        { name: 'Mail', url: 'https://gmail.com', img: 'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico' }
+    ];
+
+    function createCategoryHTML(catName, catIndex) {
+        let html = `<div class="category">
+            <div class="cat-title">${catName}</div>
+            <div class="link-grid">`;
+        
+        // প্রথম সারি (৫টি)
+        for(let i=0; i<5; i++) {
+            html += `<a href="${sampleIcons[i].url}" class="link-item">
+                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
+                <span>${sampleIcons[i].name}</span>
+            </a>`;
+        }
+        
+        // দ্বিতীয় সারি (৪টি + More)
+        for(let i=0; i<4; i++) {
+            html += `<a href="${sampleIcons[i].url}" class="link-item">
+                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
+                <span>${sampleIcons[i].name}</span>
+            </a>`;
+        }
+        
+        html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
+                <div class="icon-box more-btn-box">📂</div>
+                <span>More</span>
+            </div>
+        </div>
+        <div id="more-${catIndex}" class="more-items">`;
+        
+        // More এর ভেতরের ৪টি
+        for(let i=0; i<4; i++) {
+            html += `<a href="${sampleIcons[i].url}" class="link-item">
+                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
+                <span>Sub ${i+1}</span>
+            </a>`;
+        }
+        
+        html += `</div></div>`;
+        return html;
+    }
+
+    // পেজ লোড হলে ক্যাটাগরি সাজানো
+    function init() {
+        ['tab1', 'tab2', 'tab3'].forEach(tabId => {
+            let container = document.getElementById(tabId);
+            let content = '';
+            for(let i=1; i<=9; i++) {
+                content += createCategoryHTML(`ক্যাটাগরি ${i}`, `${tabId}-${i}`);
+            }
+            // ১০ম ক্যাটাগরি: নিজস্ব সংগ্রহ
+            content += `<div class="category">
+                <div class="cat-title">নিজস্ব সংগ্রহ</div>
+                <div class="link-grid" id="personal-${tabId}"></div>
+            </div>`;
+            container.innerHTML = content;
+        });
+        loadPersonalLinks();
+    }
+
     function openTab(evt, tabName) {
-        var i, content, tablinks;
+        currentTab = tabName;
+        let i, content, tablinks;
         content = document.getElementsByClassName("content-section");
         for (i = 0; i < content.length; i++) content[i].style.display = "none";
         tablinks = document.getElementsByClassName("tab-btn");
@@ -155,35 +185,52 @@
         evt.currentTarget.classList.add("active");
     }
 
-    // মোর ফোল্ডার প্রসারিত করার লজিক
-    function toggleMore() {
-        document.getElementById("moreItems").classList.toggle("show");
+    function toggleMore(id) {
+        document.getElementById(id).classList.toggle("show");
     }
 
-    // ডার্ক মোড লজিক
+    // লোকাল স্টোরেজ লজিক
+    function addNewLink() {
+        let name = prompt("লিংকের নাম:");
+        let url = prompt("URL (http:// সহ):");
+        if(name && url) {
+            let links = JSON.parse(localStorage.getItem(currentTab) || "[]");
+            links.push({name, url});
+            localStorage.setItem(currentTab, JSON.stringify(links));
+            loadPersonalLinks();
+        }
+    }
+
+    function loadPersonalLinks() {
+        ['tab1', 'tab2', 'tab3'].forEach(tabId => {
+            let grid = document.getElementById(`personal-${tabId}`);
+            let links = JSON.parse(localStorage.getItem(tabId) || "[]");
+            grid.innerHTML = links.map((link, index) => `
+                <div class="link-item">
+                    <a href="${link.url}" style="text-decoration:none; color:inherit;">
+                        <div class="icon-box">🔗</div>
+                        <span>${link.name}</span>
+                    </a>
+                    <span class="delete-btn" onclick="deleteLink('${tabId}', ${index})">মুছে ফেলুন</span>
+                </div>
+            `).join('');
+        });
+    }
+
+    function deleteLink(tabId, index) {
+        let links = JSON.parse(localStorage.getItem(tabId));
+        links.splice(index, 1);
+        localStorage.setItem(tabId, JSON.stringify(links));
+        loadPersonalLinks();
+    }
+
     function toggleTheme() {
-        const body = document.getElementById("body");
-        if (body.getAttribute("data-theme") === "dark") {
-            body.removeAttribute("data-theme");
-        } else {
-            body.setAttribute("data-theme", "dark");
-        }
+        document.body.setAttribute('data-theme', 
+            document.body.getAttribute('data-theme') === 'dark' ? '' : 'dark'
+        );
     }
 
-    // নতুন লিংক যুক্ত করার প্রম্পট (LocalStorage-এর জন্য বেসিক উদাহরণ)
-    function addLinkPrompt() {
-        let name = prompt("লিংকের নাম লিখুন:");
-        let url = prompt("URL দিন (http সহ):");
-        if (name && url) {
-            // এটি সাময়িকভাবে গ্রিডে যোগ হবে। স্থায়ী করতে লোকাল স্টোরেজ কোড প্রয়োজন।
-            let grid = document.getElementById("grid1");
-            let newItem = `<a href="${url}" class="link-item">
-                <div class="icon-box">🔗</div>
-                <span>${name}</span>
-            </a>`;
-            grid.innerHTML = newItem + grid.innerHTML;
-        }
-    }
+    init();
 </script>
 
 </body>
