@@ -20,7 +20,10 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            margin: 0; padding-bottom: 20px;
+            margin: 0; padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             display: flex; justify-content: space-between; align-items: center;
@@ -29,7 +32,6 @@
         }
         .header-title { font-size: 16px; font-weight: bold; }
 
-        /* ট্যাব স্টাইল */
         .tabs {
             display: flex; gap: 4px; padding: 5px; background: #dfe6e9; margin: 5px; border-radius: 8px;
         }
@@ -40,11 +42,10 @@
         .tab-btn.active { background: var(--primary); color: white; }
         .add-link-btn { background: #27ae60 !important; color: white !important; flex: 0.5; }
 
-        /* কন্টেন্ট এরিয়া */
+        .main-content { flex: 1; }
         .content-section { display: none; padding: 10px; }
         .content-section.active { display: block; }
 
-        /* ক্যাটাগরি স্টাইল */
         .category {
             background: var(--card); border-radius: 10px; padding: 10px; margin-bottom: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -54,7 +55,6 @@
             border-left: 3px solid var(--primary); padding-left: 8px; color: var(--primary);
         }
 
-        /* গ্রিড - প্রতি লাইনে ৫টি */
         .link-grid {
             display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; text-align: center;
         }
@@ -70,7 +70,6 @@
         }
         .icon-box img { width: 24px; height: 24px; object-fit: contain; }
 
-        /* More Folder Expansion */
         .more-items {
             display: none; grid-template-columns: repeat(5, 1fr); gap: 10px;
             margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc;
@@ -78,14 +77,24 @@
         .more-items.show { display: grid; }
         .more-btn-box { background: #ced4da; cursor: pointer; font-size: 16px; }
 
-        /* ডিলিট বাটন (শুধুমাত্র নিজস্ব সংগ্রহের জন্য) */
+        /* কপিরাইট বার স্টাইল */
+        footer {
+            background: var(--card);
+            color: var(--text);
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
         .delete-btn { font-size: 8px; color: red; margin-top: 2px; cursor: pointer; }
     </style>
 </head>
 <body id="mainBody">
 
 <header>
-    <span onclick="history.back()">❮</span>
+    <span onclick="history.back()" style="cursor:pointer">❮</span>
     <div class="header-title">আমার ডিরেক্টরি 🏠</div>
     <span onclick="toggleTheme()" style="cursor:pointer">🌓</span>
 </header>
@@ -97,17 +106,20 @@
     <button class="tab-btn add-link-btn" onclick="addNewLink()">+ অ্যাড</button>
 </div>
 
-<div id="tab1" class="content-section active">
-    </div>
+<div class="main-content">
+    <div id="tab1" class="content-section active"></div>
+    <div id="tab2" class="content-section"></div>
+    <div id="tab3" class="content-section"></div>
+</div>
 
-<div id="tab2" class="content-section"></div>
-
-<div id="tab3" class="content-section"></div>
+<footer>
+    © মো: আসাদুজ্জামান মিলন ০১৭২২৮৫৫৭৩৮
+</footer>
 
 <script>
     let currentTab = 'tab1';
 
-    // ১-৯ ক্যাটাগরির জন্য ডামি ডাটা (আপনি আপনার পছন্দমতো পরিবর্তন করতে পারবেন)
+    // ১-৯ ক্যাটাগরির জন্য স্যাম্পল ডাটা
     const sampleIcons = [
         { name: 'Google', url: 'https://google.com', img: 'https://www.google.com/favicon.ico' },
         { name: 'FB', url: 'https://facebook.com', img: 'https://www.facebook.com/favicon.ico' },
@@ -121,42 +133,34 @@
             <div class="cat-title">${catName}</div>
             <div class="link-grid">`;
         
-        // প্রথম সারি (৫টি)
         for(let i=0; i<5; i++) {
             html += `<a href="${sampleIcons[i].url}" class="link-item">
                 <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
                 <span>${sampleIcons[i].name}</span>
             </a>`;
         }
-        
-        // দ্বিতীয় সারি (৪টি + More)
         for(let i=0; i<4; i++) {
             html += `<a href="${sampleIcons[i].url}" class="link-item">
                 <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
                 <span>${sampleIcons[i].name}</span>
             </a>`;
         }
-        
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
             </div>
         </div>
         <div id="more-${catIndex}" class="more-items">`;
-        
-        // More এর ভেতরের ৪টি
         for(let i=0; i<4; i++) {
             html += `<a href="${sampleIcons[i].url}" class="link-item">
                 <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
                 <span>Sub ${i+1}</span>
             </a>`;
         }
-        
         html += `</div></div>`;
         return html;
     }
 
-    // পেজ লোড হলে ক্যাটাগরি সাজানো
     function init() {
         ['tab1', 'tab2', 'tab3'].forEach(tabId => {
             let container = document.getElementById(tabId);
@@ -164,7 +168,6 @@
             for(let i=1; i<=9; i++) {
                 content += createCategoryHTML(`ক্যাটাগরি ${i}`, `${tabId}-${i}`);
             }
-            // ১০ম ক্যাটাগরি: নিজস্ব সংগ্রহ
             content += `<div class="category">
                 <div class="cat-title">নিজস্ব সংগ্রহ</div>
                 <div class="link-grid" id="personal-${tabId}"></div>
@@ -176,11 +179,8 @@
 
     function openTab(evt, tabName) {
         currentTab = tabName;
-        let i, content, tablinks;
-        content = document.getElementsByClassName("content-section");
-        for (i = 0; i < content.length; i++) content[i].style.display = "none";
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
+        document.querySelectorAll(".content-section").forEach(s => s.style.display = "none");
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.classList.add("active");
     }
@@ -189,7 +189,6 @@
         document.getElementById(id).classList.toggle("show");
     }
 
-    // লোকাল স্টোরেজ লজিক
     function addNewLink() {
         let name = prompt("লিংকের নাম:");
         let url = prompt("URL (http:// সহ):");
@@ -204,6 +203,7 @@
     function loadPersonalLinks() {
         ['tab1', 'tab2', 'tab3'].forEach(tabId => {
             let grid = document.getElementById(`personal-${tabId}`);
+            if(!grid) return;
             let links = JSON.parse(localStorage.getItem(tabId) || "[]");
             grid.innerHTML = links.map((link, index) => `
                 <div class="link-item">
