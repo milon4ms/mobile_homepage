@@ -79,7 +79,7 @@
             background: var(--card); color: var(--text); text-align: center;
             padding: 15px; font-size: 12px; border-top: 1px solid #ddd; margin-top: 20px;
         }
-        .delete-btn { font-size: 8px; color: red; margin-top: 2px; cursor: pointer; }
+        .delete-btn { font-size: 8px; color: #ff4757; margin-top: 2px; cursor: pointer; }
     </style>
 </head>
 <body id="mainBody">
@@ -110,7 +110,6 @@
 <script>
     let currentTab = 'tab1';
 
-    // সংবাদপত্র ক্যাটাগরির লিংকসমূহ
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -124,28 +123,26 @@
         { name: 'রেডিও তেহরান', url: 'https://parstoday.ir/bn', img: 'https://parstoday.ir/favicon.ico' }
     ];
 
-    function createCategoryHTML(catName, catIndex, isNews = false) {
+    function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
             <div class="cat-title">${catName}</div>
             <div class="link-grid">`;
         
-        let links = isNews ? newsLinks : Array(10).fill({name: 'লিংক', url: '#', img: ''});
+        // যদি লিংক না থাকে তবে ১০টি খালি স্লট দেখাবে
+        let displayLinks = links || Array(10).fill({name: 'খালি', url: '#', img: ''});
 
-        // প্রথম সারি (৫টি)
         for(let i=0; i<5; i++) {
-            html += `<a href="${links[i].url}" class="link-item">
-                <div class="icon-box">${links[i].img ? `<img src="${links[i].img}">` : '🔗'}</div>
-                <span>${links[i].name}</span>
+            html += `<a href="${displayLinks[i].url}" class="link-item">
+                <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
+                <span>${displayLinks[i].name}</span>
             </a>`;
         }
-        // দ্বিতীয় সারি (৪টি)
         for(let i=5; i<9; i++) {
-            html += `<a href="${links[i].url}" class="link-item">
-                <div class="icon-box">${links[i].img ? `<img src="${links[i].img}">` : '🔗'}</div>
-                <span>${links[i].name}</span>
+            html += `<a href="${displayLinks[i].url}" class="link-item">
+                <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
+                <span>${displayLinks[i].name}</span>
             </a>`;
         }
-        // More বাটন
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -153,10 +150,9 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        // ১০ম লিংকটি More এর ভেতরে
-        html += `<a href="${links[9].url}" class="link-item">
-            <div class="icon-box">${links[9].img ? `<img src="${links[9].img}">` : '🔗'}</div>
-            <span>${links[9].name}</span>
+        html += `<a href="${displayLinks[9].url}" class="link-item">
+            <div class="icon-box">${displayLinks[9].img ? `<img src="${displayLinks[9].img}">` : '🔗'}</div>
+            <span>${displayLinks[9].name}</span>
         </a>`;
         
         html += `</div></div>`;
@@ -164,21 +160,27 @@
     }
 
     function init() {
-        ['tab1', 'tab2', 'tab3'].forEach(tabId => {
-            let container = document.getElementById(tabId);
-            let content = '';
-            // ১ম ক্যাটাগরি সংবাদপত্র
-            content += createCategoryHTML(`সংবাদপত্র`, `${tabId}-1`, true);
-            // ২-৯ ক্যাটাগরি খালি বা ডামি
-            for(let i=2; i<=9; i++) {
-                content += createCategoryHTML(`ক্যাটাগরি ${i}`, `${tabId}-${i}`);
-            }
-            content += `<div class="category">
-                <div class="cat-title">নিজস্ব সংগ্রহ</div>
-                <div class="link-grid" id="personal-${tabId}"></div>
-            </div>`;
-            container.innerHTML = content;
-        });
+        // ট্যাব ১ সাজানো
+        let tab1 = document.getElementById('tab1');
+        let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-1`, newsLinks);
+        for(let i=2; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
+        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
+        tab1.innerHTML = content1;
+
+        // ট্যাব ২ সাজানো
+        let tab2 = document.getElementById('tab2');
+        let content2 = '';
+        for(let i=1; i<=9; i++) content2 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab2-${i}`);
+        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
+        tab2.innerHTML = content2;
+
+        // ট্যাব ৩ সাজানো
+        let tab3 = document.getElementById('tab3');
+        let content3 = '';
+        for(let i=1; i<=9; i++) content3 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab3-${i}`);
+        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
+        tab3.innerHTML = content3;
+
         loadPersonalLinks();
     }
 
@@ -223,10 +225,12 @@
     }
 
     function deleteLink(tabId, index) {
-        let links = JSON.parse(localStorage.getItem(tabId));
-        links.splice(index, 1);
-        localStorage.setItem(tabId, JSON.stringify(links));
-        loadPersonalLinks();
+        if(confirm("আপনি কি এই লিংকটি মুছে ফেলতে চান?")) {
+            let links = JSON.parse(localStorage.getItem(tabId));
+            links.splice(index, 1);
+            localStorage.setItem(tabId, JSON.stringify(links));
+            loadPersonalLinks();
+        }
     }
 
     function toggleTheme() {
