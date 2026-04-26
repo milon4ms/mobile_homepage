@@ -21,9 +21,7 @@
             background-color: var(--bg);
             color: var(--text);
             margin: 0; padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            display: flex; flex-direction: column; min-height: 100vh;
         }
         header {
             display: flex; justify-content: space-between; align-items: center;
@@ -77,17 +75,10 @@
         .more-items.show { display: grid; }
         .more-btn-box { background: #ced4da; cursor: pointer; font-size: 16px; }
 
-        /* কপিরাইট বার স্টাইল */
         footer {
-            background: var(--card);
-            color: var(--text);
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            border-top: 1px solid #ddd;
-            margin-top: 20px;
+            background: var(--card); color: var(--text); text-align: center;
+            padding: 15px; font-size: 12px; border-top: 1px solid #ddd; margin-top: 20px;
         }
-
         .delete-btn { font-size: 8px; color: red; margin-top: 2px; cursor: pointer; }
     </style>
 </head>
@@ -95,7 +86,7 @@
 
 <header>
     <span onclick="history.back()" style="cursor:pointer">❮</span>
-    <div class="header-title">আমার হোমপেজ 🏠</div>
+    <div class="header-title">আমার ডিরেক্টরি 🏠</div>
     <span onclick="toggleTheme()" style="cursor:pointer">🌓</span>
 </header>
 
@@ -119,44 +110,55 @@
 <script>
     let currentTab = 'tab1';
 
-    // ১-৯ ক্যাটাগরির জন্য স্যাম্পল ডাটা
-    const sampleIcons = [
-        { name: 'Google', url: 'https://google.com', img: 'https://www.google.com/favicon.ico' },
-        { name: 'FB', url: 'https://facebook.com', img: 'https://www.facebook.com/favicon.ico' },
-        { name: 'YT', url: 'https://youtube.com', img: 'https://www.youtube.com/favicon.ico' },
-        { name: 'WA', url: 'https://whatsapp.com', img: 'https://static.whatsapp.net/rsrc.php/v3/yP/r/r_o_p0Vv09B.png' },
-        { name: 'Mail', url: 'https://gmail.com', img: 'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico' }
+    // সংবাদপত্র ক্যাটাগরির লিংকসমূহ
+    const newsLinks = [
+        { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
+        { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
+        { name: 'যুগান্তর', url: 'https://www.jugantor.com', img: 'https://www.jugantor.com/favicon.ico' },
+        { name: 'ইনকিলাব', url: 'https://www.dailyinqilab.com', img: 'https://www.dailyinqilab.com/favicon.ico' },
+        { name: 'মানবজমিন', url: 'https://www.mzamin.com', img: 'https://www.mzamin.com/favicon.ico' },
+        { name: 'কালেরকন্ঠ', url: 'https://www.kalerkantho.com', img: 'https://www.kalerkantho.com/favicon.ico' },
+        { name: 'কালবেলা', url: 'https://www.kalbela.com', img: 'https://www.kalbela.com/favicon.ico' },
+        { name: 'আমারদেশ', url: 'https://amardesh.com', img: 'https://amardesh.com/favicon.ico' },
+        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
+        { name: 'রেডিও তেহরান', url: 'https://parstoday.ir/bn', img: 'https://parstoday.ir/favicon.ico' }
     ];
 
-    function createCategoryHTML(catName, catIndex) {
+    function createCategoryHTML(catName, catIndex, isNews = false) {
         let html = `<div class="category">
             <div class="cat-title">${catName}</div>
             <div class="link-grid">`;
         
+        let links = isNews ? newsLinks : Array(10).fill({name: 'লিংক', url: '#', img: ''});
+
+        // প্রথম সারি (৫টি)
         for(let i=0; i<5; i++) {
-            html += `<a href="${sampleIcons[i].url}" class="link-item">
-                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
-                <span>${sampleIcons[i].name}</span>
+            html += `<a href="${links[i].url}" class="link-item">
+                <div class="icon-box">${links[i].img ? `<img src="${links[i].img}">` : '🔗'}</div>
+                <span>${links[i].name}</span>
             </a>`;
         }
-        for(let i=0; i<4; i++) {
-            html += `<a href="${sampleIcons[i].url}" class="link-item">
-                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
-                <span>${sampleIcons[i].name}</span>
+        // দ্বিতীয় সারি (৪টি)
+        for(let i=5; i<9; i++) {
+            html += `<a href="${links[i].url}" class="link-item">
+                <div class="icon-box">${links[i].img ? `<img src="${links[i].img}">` : '🔗'}</div>
+                <span>${links[i].name}</span>
             </a>`;
         }
+        // More বাটন
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
             </div>
         </div>
         <div id="more-${catIndex}" class="more-items">`;
-        for(let i=0; i<4; i++) {
-            html += `<a href="${sampleIcons[i].url}" class="link-item">
-                <div class="icon-box"><img src="${sampleIcons[i].img}"></div>
-                <span>Sub ${i+1}</span>
-            </a>`;
-        }
+        
+        // ১০ম লিংকটি More এর ভেতরে
+        html += `<a href="${links[9].url}" class="link-item">
+            <div class="icon-box">${links[9].img ? `<img src="${links[9].img}">` : '🔗'}</div>
+            <span>${links[9].name}</span>
+        </a>`;
+        
         html += `</div></div>`;
         return html;
     }
@@ -165,7 +167,10 @@
         ['tab1', 'tab2', 'tab3'].forEach(tabId => {
             let container = document.getElementById(tabId);
             let content = '';
-            for(let i=1; i<=9; i++) {
+            // ১ম ক্যাটাগরি সংবাদপত্র
+            content += createCategoryHTML(`সংবাদপত্র`, `${tabId}-1`, true);
+            // ২-৯ ক্যাটাগরি খালি বা ডামি
+            for(let i=2; i<=9; i++) {
                 content += createCategoryHTML(`ক্যাটাগরি ${i}`, `${tabId}-${i}`);
             }
             content += `<div class="category">
