@@ -177,6 +177,35 @@
         { name: 'পোকি গেমস', url: 'https://poki.com/', img: 'https://poki.com/favicon.ico' }
     ];
 
+    // ৫. কেনাকাটা তালিকা
+    const shoppingLinks = [
+        { name: 'দারাজ', url: 'https://www.daraz.com.bd', img: 'https://www.daraz.com.bd/favicon.ico' },
+        { name: 'ট্রেন টিকেট', url: 'https://eticket.railway.gov.bd', img: 'https://eticket.railway.gov.bd/favicon.ico' },
+        { name: 'মেডেক্স', url: 'https://medex.com.bd', img: 'https://medex.com.bd/favicon.ico' },
+        { name: 'কার্টআপ', url: 'https://cartup.com.bd', img: 'https://cartup.com.bd/favicon.ico' },
+        { name: 'পিকাবো', url: 'https://www.pickaboo.com', img: 'https://www.pickaboo.com/favicon.ico' },
+        { name: 'বিক্রয় (কুড়িগ্রাম)', url: 'https://bikroy.com/bn/ads/kurigram', img: 'https://bikroy.com/favicon.ico' },
+        { name: 'secondbd', url: 'https://secondbd.com', img: 'https://secondbd.com/favicon.ico' },
+        { name: 'মোবাইল দোকান', url: 'https://www.mobiledokan.com', img: 'https://www.mobiledokan.com/favicon.ico' },
+        { name: 'রায়ান কম্পিউটার', url: 'https://www.ryanscomputers.com', img: 'https://www.ryanscomputers.com/favicon.ico' },
+        { name: 'jiji', url: 'https://jiji.com.bd', img: 'https://jiji.com.bd/favicon.ico' },
+        { name: 'clickbd', url: 'https://www.clickbd.com', img: 'https://www.clickbd.com/favicon.ico' }
+    ];
+
+    // ৬. হোমিওপ্যাথি তালিকা
+    const homeoLinks = [
+        { name: 'নির্ভীক হোমিও', url: 'http://nirvik.mooo.com/', img: 'http://nirvik.mooo.com/favicon.ico' },
+        { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: 'https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png' },
+        { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: 'https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png' },
+        { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: 'https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png' },
+        { name: 'মেটেরিয়া মেডিকা', url: 'https://www-homeoint-org.translate.goog/books/boericmm/index.htm?_x_tr_sch=http&_x_tr_sl=en&_x_tr_tl=bn&_x_tr_hl=en&_x_tr_pto=wapp', img: 'https://www.google.com/favicon.ico' },
+        { name: 'dr1', url: 'https://dr1.com', img: '🔗' },
+        { name: 'dr2', url: 'https://dr1.com', img: '🔗' },
+        { name: 'dr3', url: 'https://dr1.com', img: '🔗' },
+        { name: 'dr4', url: 'https://dr1.com', img: '🔗' },
+        { name: 'dr5', url: 'https://dr1.com', img: '🔗' }
+    ];
+
     function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
             <div class="cat-title">${catName}</div>
@@ -187,14 +216,14 @@
         for(let i=0; i<5; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
             html += `<a href="${item.url}" class="link-item" target="_blank">
-                <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
+                <div class="icon-box">${(item.img && item.img !== '🔗') ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
         for(let i=5; i<9; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
             html += `<a href="${item.url}" class="link-item" target="_blank">
-                <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
+                <div class="icon-box">${(item.img && item.img !== '🔗') ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
@@ -208,7 +237,7 @@
         if (displayLinks.length > 9) {
             for(let i=9; i < displayLinks.length; i++) {
                 html += `<a href="${displayLinks[i].url}" class="link-item" target="_blank">
-                    <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
+                    <div class="icon-box">${(displayLinks[i].img && displayLinks[i].img !== '🔗') ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
                     <span>${displayLinks[i].name}</span>
                 </a>`;
             }
@@ -223,9 +252,11 @@
         let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-news`, newsLinks);
         content1 += createCategoryHTML(`এআই (AI)`, `tab1-ai`, aiLinks);
         content1 += createCategoryHTML(`সামাজিক ও ইমেইল`, `tab1-social`, socialEmailLinks);
-        content1 += createCategoryHTML(`টুলস`, `tab1-tools`, toolsLinks); // এখানে toolsLinks যুক্ত করা হয়েছে
+        content1 += createCategoryHTML(`টুলস`, `tab1-tools`, toolsLinks);
+        content1 += createCategoryHTML(`কেনাকাটা`, `tab1-shopping`, shoppingLinks); // কেনাকাটা যুক্ত হলো
+        content1 += createCategoryHTML(`হোমিওপ্যাথি`, `tab1-homeo`, homeoLinks);      // হোমিওপ্যাথি যুক্ত হলো
         
-        for(let i=5; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
+        for(let i=7; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
         content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
 
