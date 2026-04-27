@@ -110,6 +110,7 @@
 <script>
     let currentTab = 'tab1';
 
+    // আপডেট করা সংবাদপত্রের তালিকা (বিবিসি বাংলা বাদ দিয়ে নতুনগুলো যুক্ত)
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -119,13 +120,10 @@
         { name: 'কালেরকন্ঠ', url: 'https://www.kalerkantho.com', img: 'https://www.kalerkantho.com/favicon.ico' },
         { name: 'কালবেলা', url: 'https://www.kalbela.com', img: 'https://www.kalbela.com/favicon.ico' },
         { name: 'আমারদেশ', url: 'https://amardesh.com', img: 'https://amardesh.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
-        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
+        { name: 'সময় নিউজ', url: 'https://www.somoynews.tv', img: 'https://www.somoynews.tv/favicon.ico' },
+        { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://bangla.bdnews24.com/favicon.ico' },
+        { name: 'বাংলা ট্রিবিউন', url: 'https://www.banglatribune.com', img: 'https://www.banglatribune.com/favicon.ico' },
+        { name: 'নয়া দিগন্ত', url: 'https://www.dailynayadiganta.com', img: 'https://www.dailynayadiganta.com/favicon.ico' },
         { name: 'রেডিও তেহরান', url: 'https://parstoday.ir/bn', img: 'https://parstoday.ir/favicon.ico' }
     ];
 
@@ -134,21 +132,25 @@
             <div class="cat-title">${catName}</div>
             <div class="link-grid">`;
         
-        // যদি লিংক না থাকে তবে ১০টি খালি স্লট দেখাবে
         let displayLinks = links || Array(10).fill({name: 'খালি', url: '#', img: ''});
 
+        // প্রথম সারি (৫টি আইকন)
         for(let i=0; i<5; i++) {
-            html += `<a href="${displayLinks[i].url}" class="link-item">
-                <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
-                <span>${displayLinks[i].name}</span>
+            let item = displayLinks[i] || {name: '', url: '#', img: ''};
+            html += `<a href="${item.url}" class="link-item">
+                <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
+                <span>${item.name}</span>
             </a>`;
         }
+        // দ্বিতীয় সারি (৪টি আইকন)
         for(let i=5; i<9; i++) {
-            html += `<a href="${displayLinks[i].url}" class="link-item">
-                <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
-                <span>${displayLinks[i].name}</span>
+            let item = displayLinks[i] || {name: '', url: '#', img: ''};
+            html += `<a href="${item.url}" class="link-item">
+                <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
+                <span>${item.name}</span>
             </a>`;
         }
+        // More বাটন (২য় সারির শেষ স্লট)
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -156,35 +158,40 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        html += `<a href="${displayLinks[9].url}" class="link-item">
-            <div class="icon-box">${displayLinks[9].img ? `<img src="${displayLinks[9].img}">` : '🔗'}</div>
-            <span>${displayLinks[9].name}</span>
-        </a>`;
+        // বাকি সব লিংক More এর ভেতরে (৯ নম্বর ইন্ডেক্স থেকে শেষ পর্যন্ত)
+        if (displayLinks.length > 9) {
+            for(let i=9; i < displayLinks.length; i++) {
+                html += `<a href="${displayLinks[i].url}" class="link-item">
+                    <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
+                    <span>${displayLinks[i].name}</span>
+                </a>`;
+            }
+        }
         
         html += `</div></div>`;
         return html;
     }
 
     function init() {
-        // ট্যাব ১ সাজানো
+        // ট্যাব ১ সাজানো (এখানে সংবাদপত্র আছে)
         let tab1 = document.getElementById('tab1');
         let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-1`, newsLinks);
         for(let i=2; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
-        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
+        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ১)</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
 
         // ট্যাব ২ সাজানো
         let tab2 = document.getElementById('tab2');
         let content2 = '';
         for(let i=1; i<=9; i++) content2 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab2-${i}`);
-        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
+        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ২)</div><div class="link-grid" id="personal-tab2"></div></div>`;
         tab2.innerHTML = content2;
 
         // ট্যাব ৩ সাজানো
         let tab3 = document.getElementById('tab3');
         let content3 = '';
         for(let i=1; i<=9; i++) content3 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab3-${i}`);
-        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
+        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ৩)</div><div class="link-grid" id="personal-tab3"></div></div>`;
         tab3.innerHTML = content3;
 
         loadPersonalLinks();
@@ -199,7 +206,8 @@
     }
 
     function toggleMore(id) {
-        document.getElementById(id).classList.toggle("show");
+        let el = document.getElementById(id);
+        el.classList.toggle("show");
     }
 
     function addNewLink() {
@@ -220,7 +228,7 @@
             let links = JSON.parse(localStorage.getItem(tabId) || "[]");
             grid.innerHTML = links.map((link, index) => `
                 <div class="link-item">
-                    <a href="${link.url}" style="text-decoration:none; color:inherit;">
+                    <a href="${link.url}" target="_blank" style="text-decoration:none; color:inherit;">
                         <div class="icon-box">🔗</div>
                         <span>${link.name}</span>
                     </a>
