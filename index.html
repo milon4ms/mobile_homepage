@@ -110,22 +110,17 @@
 <script>
     let currentTab = 'tab1';
 
-    // সংবাদপত্র তালিকার সুনির্দিষ্ট অর্ডার
+    // ১. সংবাদপত্রের তালিকা
     const newsLinks = [
-        // ১ম সারি (৫টি)
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
         { name: 'যুগান্তর', url: 'https://www.jugantor.com', img: 'https://www.jugantor.com/favicon.ico' },
         { name: 'ইনকিলাব', url: 'https://www.dailyinqilab.com', img: 'https://www.dailyinqilab.com/favicon.ico' },
         { name: 'মানবজমিন', url: 'https://www.mzamin.com', img: 'https://www.mzamin.com/favicon.ico' },
-        
-        // ২য় সারি (৪টি)
         { name: 'আমার দেশ', url: 'https://amardesh.com', img: 'https://amardesh.com/favicon.ico' },
         { name: 'বাংলা ট্রিবিউন', url: 'https://www.banglatribune.com', img: 'https://www.banglatribune.com/favicon.ico' },
         { name: 'কুড়িগ্রাম নিউজ', url: 'https://news.google.com/topics/CAAqHAgKIhZDQklTQ2pvSWJHOWpZV3hmZGpJb0FBUAE/sections/CAQiVkNCSVNPam9JYkc5allXeGZkakpDRUd4dlkyRnNYM1l5WDNObFkzUnBiMjV5RFJJTEwyY3ZNVEl5TjJzeWJUVjZEUW9MTDJjdk1USXlOMnN5YlRVb0FBKjQIACowCAoiKkNCSVNHVG9JYkc5allXeGZkako2RFFvTEwyY3ZNVEl5TjJzeWJUVW9BQVABUAE?hl=bn&gl=BD&ceid=BD%3Abn', img: 'https://www.gstatic.com/images/branding/product/1x/googlenews_96dp.png' },
         { name: 'সময় নিউজ', url: 'https://www.somoynews.tv', img: 'https://www.somoynews.tv/favicon.ico' },
-
-        // More ফোল্ডারের জন্য
         { name: 'কালেরকন্ঠ', url: 'https://www.kalerkantho.com', img: 'https://www.kalerkantho.com/favicon.ico' },
         { name: 'কালবেলা', url: 'https://www.kalbela.com', img: 'https://www.kalbela.com/favicon.ico' },
         { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://bangla.bdnews24.com/favicon.ico' },
@@ -139,6 +134,21 @@
         { name: 'ডন পাকিস্তান', url: 'https://www.dawn.com', img: 'https://www.dawn.com/favicon.ico' }
     ];
 
+    // ২. এআই টুলের তালিকা
+    const aiLinks = [
+        { name: 'জেমিনি', url: 'https://gemini.google.com', img: 'https://www.gstatic.com/lamda/images/favicon_v2_196x196.png' },
+        { name: 'ChatGPT', url: 'https://chatgpt.com', img: 'https://chatgpt.com/favicon.ico' },
+        { name: 'DeepSeek', url: 'https://www.deepseek.com', img: 'https://www.deepseek.com/favicon.ico' },
+        { name: 'Claude', url: 'https://claude.ai', img: 'https://claude.ai/favicon.ico' },
+        { name: 'Grok', url: 'https://x.com/i/grok', img: 'https://abs.twimg.com/favicons/twitter.2.ico' },
+        { name: 'অডিও AI', url: 'https://aistudio.google.com/generate-speech?model=gemini-2.5-pro-preview-tts', img: 'https://www.gstatic.com/ai-studio/favicon.ico' },
+        { name: 'বিং ইমেজ', url: 'https://www.bing.com/images/create?FORM=GENILP', img: 'https://www.bing.com/favicon.ico' },
+        { name: 'Copilot', url: 'https://copilot.microsoft.com', img: 'https://copilot.microsoft.com/favicon.ico' },
+        { name: 'Arena AI', url: 'https://arena.ai', img: 'https://arena.ai/favicon.ico' },
+        { name: 'Meta AI', url: 'https://www.meta.ai', img: 'https://www.meta.ai/favicon.ico' },
+        { name: 'Perplexity', url: 'https://www.perplexity.ai', img: 'https://www.perplexity.ai/favicon.ico' }
+    ];
+
     function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
             <div class="cat-title">${catName}</div>
@@ -146,7 +156,6 @@
         
         let displayLinks = links || Array(10).fill({name: 'খালি', url: '#', img: ''});
 
-        // প্রথম ৫টি (Row 1)
         for(let i=0; i<5; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
             html += `<a href="${item.url}" class="link-item" target="_blank">
@@ -154,8 +163,6 @@
                 <span>${item.name}</span>
             </a>`;
         }
-        
-        // পরবর্তী ৪টি (Row 2)
         for(let i=5; i<9; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
             html += `<a href="${item.url}" class="link-item" target="_blank">
@@ -163,8 +170,6 @@
                 <span>${item.name}</span>
             </a>`;
         }
-
-        // More বাটন
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -172,7 +177,6 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        // বাকি সব More-এর ভেতরে
         if (displayLinks.length > 9) {
             for(let i=9; i < displayLinks.length; i++) {
                 html += `<a href="${displayLinks[i].url}" class="link-item" target="_blank">
@@ -187,12 +191,15 @@
     }
 
     function init() {
+        // ট্যাব ১ সাজানো
         let tab1 = document.getElementById('tab1');
-        let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-1`, newsLinks);
-        for(let i=2; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
+        let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-news`, newsLinks);
+        content1 += createCategoryHTML(`এআই (AI)`, `tab1-ai`, aiLinks); // এআই ক্যাটাগরি যুক্ত করা হলো
+        for(let i=3; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
         content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
 
+        // ট্যাব ২ ও ৩ আগের মতোই থাকবে
         ['tab2', 'tab3'].forEach(id => {
             let tab = document.getElementById(id);
             let content = '';
