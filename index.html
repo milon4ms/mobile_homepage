@@ -110,21 +110,33 @@
 <script>
     let currentTab = 'tab1';
 
-    // আপডেট করা সংবাদপত্রের তালিকা (বিবিসি বাংলা বাদ দিয়ে নতুনগুলো যুক্ত)
+    // সংবাদপত্র তালিকার সুনির্দিষ্ট অর্ডার
     const newsLinks = [
+        // ১ম সারি (৫টি)
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
         { name: 'যুগান্তর', url: 'https://www.jugantor.com', img: 'https://www.jugantor.com/favicon.ico' },
         { name: 'ইনকিলাব', url: 'https://www.dailyinqilab.com', img: 'https://www.dailyinqilab.com/favicon.ico' },
         { name: 'মানবজমিন', url: 'https://www.mzamin.com', img: 'https://www.mzamin.com/favicon.ico' },
+        
+        // ২য় সারি (৪টি)
+        { name: 'আমার দেশ', url: 'https://amardesh.com', img: 'https://amardesh.com/favicon.ico' },
+        { name: 'বাংলা ট্রিবিউন', url: 'https://www.banglatribune.com', img: 'https://www.banglatribune.com/favicon.ico' },
+        { name: 'কুড়িগ্রাম নিউজ', url: 'https://news.google.com/topics/CAAqHAgKIhZDQklTQ2pvSWJHOWpZV3hmZGpJb0FBUAE/sections/CAQiVkNCSVNPam9JYkc5allXeGZkakpDRUd4dlkyRnNYM1l5WDNObFkzUnBiMjV5RFJJTEwyY3ZNVEl5TjJzeWJUVjZEUW9MTDJjdk1USXlOMnN5YlRVb0FBKjQIACowCAoiKkNCSVNHVG9JYkc5allXeGZkako2RFFvTEwyY3ZNVEl5TjJzeWJUVW9BQVABUAE?hl=bn&gl=BD&ceid=BD%3Abn', img: 'https://www.gstatic.com/images/branding/product/1x/googlenews_96dp.png' },
+        { name: 'সময় নিউজ', url: 'https://www.somoynews.tv', img: 'https://www.somoynews.tv/favicon.ico' },
+
+        // More ফোল্ডারের জন্য
         { name: 'কালেরকন্ঠ', url: 'https://www.kalerkantho.com', img: 'https://www.kalerkantho.com/favicon.ico' },
         { name: 'কালবেলা', url: 'https://www.kalbela.com', img: 'https://www.kalbela.com/favicon.ico' },
-        { name: 'আমারদেশ', url: 'https://amardesh.com', img: 'https://amardesh.com/favicon.ico' },
-        { name: 'সময় নিউজ', url: 'https://www.somoynews.tv', img: 'https://www.somoynews.tv/favicon.ico' },
         { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://bangla.bdnews24.com/favicon.ico' },
-        { name: 'বাংলা ট্রিবিউন', url: 'https://www.banglatribune.com', img: 'https://www.banglatribune.com/favicon.ico' },
-        { name: 'নয়া দিগন্ত', url: 'https://www.dailynayadiganta.com', img: 'https://www.dailynayadiganta.com/favicon.ico' },
-        { name: 'রেডিও তেহরান', url: 'https://parstoday.ir/bn', img: 'https://parstoday.ir/favicon.ico' }
+        { name: 'BBC বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
+        { name: 'পার্সটুডে', url: 'https://parstoday.ir/bn/news/latest_news', img: 'https://parstoday.ir/favicon.ico' },
+        { name: 'BBC World', url: 'https://www.bbc.com/news', img: 'https://www.bbc.com/favicon.ico' },
+        { name: 'CNN', url: 'https://edition.cnn.com', img: 'https://edition.cnn.com/favicon.ico' },
+        { name: 'আলজাজিরা', url: 'https://www.aljazeera.com', img: 'https://www.aljazeera.com/favicon.ico' },
+        { name: 'Times of India', url: 'https://timesofindia.indiatimes.com', img: 'https://timesofindia.indiatimes.com/favicon.ico' },
+        { name: 'আনন্দবাজার', url: 'https://www.anandabazar.com', img: 'https://www.anandabazar.com/favicon.ico' },
+        { name: 'ডন পাকিস্তান', url: 'https://www.dawn.com', img: 'https://www.dawn.com/favicon.ico' }
     ];
 
     function createCategoryHTML(catName, catIndex, links = null) {
@@ -134,23 +146,25 @@
         
         let displayLinks = links || Array(10).fill({name: 'খালি', url: '#', img: ''});
 
-        // প্রথম সারি (৫টি আইকন)
+        // প্রথম ৫টি (Row 1)
         for(let i=0; i<5; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
-            html += `<a href="${item.url}" class="link-item">
+            html += `<a href="${item.url}" class="link-item" target="_blank">
                 <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
-        // দ্বিতীয় সারি (৪টি আইকন)
+        
+        // পরবর্তী ৪টি (Row 2)
         for(let i=5; i<9; i++) {
             let item = displayLinks[i] || {name: '', url: '#', img: ''};
-            html += `<a href="${item.url}" class="link-item">
+            html += `<a href="${item.url}" class="link-item" target="_blank">
                 <div class="icon-box">${item.img ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
-        // More বাটন (২য় সারির শেষ স্লট)
+
+        // More বাটন
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -158,10 +172,10 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        // বাকি সব লিংক More এর ভেতরে (৯ নম্বর ইন্ডেক্স থেকে শেষ পর্যন্ত)
+        // বাকি সব More-এর ভেতরে
         if (displayLinks.length > 9) {
             for(let i=9; i < displayLinks.length; i++) {
-                html += `<a href="${displayLinks[i].url}" class="link-item">
+                html += `<a href="${displayLinks[i].url}" class="link-item" target="_blank">
                     <div class="icon-box">${displayLinks[i].img ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
                     <span>${displayLinks[i].name}</span>
                 </a>`;
@@ -173,26 +187,19 @@
     }
 
     function init() {
-        // ট্যাব ১ সাজানো (এখানে সংবাদপত্র আছে)
         let tab1 = document.getElementById('tab1');
         let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-1`, newsLinks);
         for(let i=2; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
-        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ১)</div><div class="link-grid" id="personal-tab1"></div></div>`;
+        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
 
-        // ট্যাব ২ সাজানো
-        let tab2 = document.getElementById('tab2');
-        let content2 = '';
-        for(let i=1; i<=9; i++) content2 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab2-${i}`);
-        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ২)</div><div class="link-grid" id="personal-tab2"></div></div>`;
-        tab2.innerHTML = content2;
-
-        // ট্যাব ৩ সাজানো
-        let tab3 = document.getElementById('tab3');
-        let content3 = '';
-        for(let i=1; i<=9; i++) content3 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab3-${i}`);
-        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ (ট্যাব ৩)</div><div class="link-grid" id="personal-tab3"></div></div>`;
-        tab3.innerHTML = content3;
+        ['tab2', 'tab3'].forEach(id => {
+            let tab = document.getElementById(id);
+            let content = '';
+            for(let i=1; i<=9; i++) content += createCategoryHTML(`ক্যাটাগরি ${i}`, `${id}-${i}`);
+            content += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-${id}"></div></div>`;
+            tab.innerHTML = content;
+        });
 
         loadPersonalLinks();
     }
@@ -206,8 +213,7 @@
     }
 
     function toggleMore(id) {
-        let el = document.getElementById(id);
-        el.classList.toggle("show");
+        document.getElementById(id).classList.toggle("show");
     }
 
     function addNewLink() {
