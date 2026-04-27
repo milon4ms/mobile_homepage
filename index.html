@@ -149,6 +149,20 @@
         { name: 'Perplexity', url: 'https://www.perplexity.ai', img: 'https://www.perplexity.ai/favicon.ico' }
     ];
 
+    // ৩. সামাজিক ও ইমেইল তালিকা
+    const socialEmailLinks = [
+        { name: 'ফেসবুক', url: 'https://www.facebook.com', img: 'https://www.facebook.com/favicon.ico' },
+        { name: 'এক্স', url: 'https://x.com', img: 'https://abs.twimg.com/favicons/twitter.2.ico' },
+        { name: 'ইন্সট্রাগ্রাম', url: 'https://www.instagram.com', img: 'https://www.instagram.com/favicon.ico' },
+        { name: 'টিকটক', url: 'https://www.tiktok.com', img: 'https://www.tiktok.com/favicon.ico' },
+        { name: 'ইউটিউব ডাউনলোড', url: 'https://video.genyt.net/FGPKwWcDgP0', img: 'https://www.youtube.com/favicon.ico' },
+        { name: 'ইউটিউব', url: 'https://www.youtube.com', img: 'https://www.youtube.com/favicon.ico' },
+        { name: 'জিমেইল', url: 'https://mail.google.com', img: 'https://mail.google.com/favicon.ico' },
+        { name: 'ইয়াগুমেইল', url: 'https://mail.yahoo.com', img: 'https://mail.yahoo.com/favicon.ico' },
+        { name: 'লাইভমেইল', url: 'https://outlook.live.com', img: 'https://outlook.live.com/favicon.ico' },
+        { name: 'টেম্পমেইল', url: 'https://temp-mail.org/en/', img: 'https://temp-mail.org/favicon.ico' }
+    ];
+
     function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
             <div class="cat-title">${catName}</div>
@@ -194,12 +208,13 @@
         // ট্যাব ১ সাজানো
         let tab1 = document.getElementById('tab1');
         let content1 = createCategoryHTML(`সংবাদপত্র`, `tab1-news`, newsLinks);
-        content1 += createCategoryHTML(`এআই (AI)`, `tab1-ai`, aiLinks); // এআই ক্যাটাগরি যুক্ত করা হলো
-        for(let i=3; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
+        content1 += createCategoryHTML(`এআই (AI)`, `tab1-ai`, aiLinks);
+        content1 += createCategoryHTML(`সামাজিক ও ইমেইল`, `tab1-social`, socialEmailLinks); // নতুন ক্যাটাগরি
+        for(let i=4; i<=9; i++) content1 += createCategoryHTML(`ক্যাটাগরি ${i}`, `tab1-${i}`);
         content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
 
-        // ট্যাব ২ ও ৩ আগের মতোই থাকবে
+        // ট্যাব ২ ও ৩
         ['tab2', 'tab3'].forEach(id => {
             let tab = document.getElementById(id);
             let content = '';
