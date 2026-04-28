@@ -59,6 +59,7 @@
         .link-item {
             text-decoration: none; color: var(--text); font-size: 9px;
             display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
         }
         .icon-box {
             width: 42px; height: 42px; background: #f8f9fa; border-radius: 10px;
@@ -110,7 +111,7 @@
 <script>
     let currentTab = 'tab1';
 
-    // ১. সংবাদপত্রের তালিকা
+    // ১. সংবাদপত্রের তালিকা (বিবিসি বাংলা শেষে আছে)
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -126,7 +127,6 @@
         { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://bangla.bdnews24.com/favicon.ico' },
         { name: 'বিবিসি বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' }
     ];
-        
 
     // ২. এআই টুলের তালিকা
     const aiLinks = [
@@ -165,7 +165,7 @@
         { name: 'মেটেরিয়া মেডিকা', url: 'https://www-homeoint-org.translate.goog/books/boericmm/index.htm?_x_tr_sch=http&_x_tr_sl=en&_x_tr_tl=bn&_x_tr_hl=en&_x_tr_pto=wapp', img: '🔗' }
     ];
 
-    // ৬. হোস্টিং তালিকা (নতুন)
+    // ৬. হোস্টিং তালিকা
     const hostingLinks = [
         { name: 'গুগল ড্রাইভ', url: 'https://drive.google.com', img: 'https://ssl.gstatic.com/docs/doclist/images/drive_2020q4_32dp.png' },
         { name: 'ওয়ান ড্রাইভ', url: 'https://onedrive.live.com', img: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/favicons/favicon.ico' },
@@ -180,7 +180,7 @@
         { name: 'AWARDSPACE', url: 'https://www.awardspace.com', img: 'https://www.awardspace.com/favicon.ico' }
     ];
 
-    // ৭. বিজনেস তালিকা (নতুন)
+    // ৭. বিজনেস তালিকা
     const businessLinks = [
         { name: 'নির্ভীক বাজার১', url: 'https://nirvikbazar.mooo.com', img: '🔗' },
         { name: 'নির্ভীক বাজার২', url: 'https://nirvikbazar.kesug.com/', img: '🔗' },
@@ -197,22 +197,18 @@
             <div class="cat-title">${catName}</div>
             <div class="link-grid">`;
         
-        let displayLinks = links || Array(10).fill({name: 'খালি', url: '#', img: ''});
+        let displayLinks = links || [];
 
-        for(let i=0; i<5; i++) {
-            let item = displayLinks[i] || {name: '', url: '#', img: ''};
+        // প্রথম ৯টি লিঙ্ক সরাসরি গ্রিডে দেখাবে
+        for(let i=0; i<Math.min(9, displayLinks.length); i++) {
+            let item = displayLinks[i];
             html += `<a href="${item.url}" class="link-item" target="_blank">
                 <div class="icon-box">${(item.img && item.img !== '🔗') ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
-        for(let i=5; i<9; i++) {
-            let item = displayLinks[i] || {name: '', url: '#', img: ''};
-            html += `<a href="${item.url}" class="link-item" target="_blank">
-                <div class="icon-box">${(item.img && item.img !== '🔗') ? `<img src="${item.img}">` : '🔗'}</div>
-                <span>${item.name}</span>
-            </a>`;
-        }
+
+        // More বাটন যোগ করা
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -220,11 +216,13 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
+        // ১০ নম্বর লিঙ্ক থেকে বাকিগুলো More সেকশনে যাবে
         if (displayLinks.length > 9) {
             for(let i=9; i < displayLinks.length; i++) {
-                html += `<a href="${displayLinks[i].url}" class="link-item" target="_blank">
-                    <div class="icon-box">${(displayLinks[i].img && displayLinks[i].img !== '🔗') ? `<img src="${displayLinks[i].img}">` : '🔗'}</div>
-                    <span>${displayLinks[i].name}</span>
+                let item = displayLinks[i];
+                html += `<a href="${item.url}" class="link-item" target="_blank">
+                    <div class="icon-box">${(item.img && item.img !== '🔗') ? `<img src="${item.img}">` : '🔗'}</div>
+                    <span>${item.name}</span>
                 </a>`;
             }
         }
@@ -240,8 +238,8 @@
         content1 += createCategoryHTML(`টুলস`, `tab1-tools`, toolsLinks);
         content1 += createCategoryHTML(`কেনাকাটা`, `tab1-shopping`, shoppingLinks);
         content1 += createCategoryHTML(`হোমিওপ্যাথি`, `tab1-homeo`, homeoLinks);
-        content1 += createCategoryHTML(`হোস্টিং`, `tab1-hosting`, hostingLinks); // হোস্টিং যুক্ত হলো
-        content1 += createCategoryHTML(`বিজনেস`, `tab1-business`, businessLinks); // বিজনেস যুক্ত হলো
+        content1 += createCategoryHTML(`হোস্টিং`, `tab1-hosting`, hostingLinks);
+        content1 += createCategoryHTML(`বিজনেস`, `tab1-business`, businessLinks);
         
         content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
         tab1.innerHTML = content1;
@@ -266,7 +264,8 @@
     }
 
     function toggleMore(id) {
-        document.getElementById(id).classList.toggle("show");
+        let el = document.getElementById(id);
+        el.classList.toggle("show");
     }
 
     function addNewLink() {
