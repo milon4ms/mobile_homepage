@@ -69,6 +69,28 @@
         }
         .icon-box img { width: 24px; height: 24px; object-fit: contain; }
 
+        /* মোবাইল অপ্টিমাইজেশন (Screen Width 480px এর নিচে হলে কাজ করবে) */
+        @media screen and (max-width: 480px) {
+            .link-grid {
+                gap: 5px; /* আইকনগুলোর মাঝখানের গ্যাপ কমানো হয়েছে */
+            }
+            .icon-box {
+                width: 52px; /* আইকন বক্সের সাইজ বাড়ানো হয়েছে */
+                height: 52px;
+                border-radius: 12px;
+            }
+            .icon-box img {
+                width: 32px; /* ইমেজের সাইজ বাড়ানো হয়েছে */
+                height: 32px;
+            }
+            .link-item {
+                font-size: 10px; /* নিচের টেক্সট সামান্য বড় করা হয়েছে */
+            }
+            .category {
+                padding: 8px; /* সাইড স্পেস সামান্য কমিয়ে আইকনকে জায়গা দেওয়া হয়েছে */
+            }
+        }
+
         .more-items {
             display: none; grid-template-columns: repeat(5, 1fr); gap: 10px;
             margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc;
@@ -111,7 +133,7 @@
 <script>
     let currentTab = 'tab1';
 
-    // ১. সংবাদপত্রের তালিকা (বিবিসি বাংলা শেষে আছে)
+    // ১. সংবাদপত্রের তালিকা
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -127,15 +149,15 @@
         { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://www.google.com/s2/favicons?domain=bangla.bdnews24.com' },
         { name: 'বিবিসি বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
         { name: 'পার্সটুডে', url: 'https://parstoday.ir/bn/news/latest_news', img: 'https://upload.wikimedia.org/wikipedia/bn/4/4d/%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%9F%E0%A7%81%E0%A6%A1%E0%A7%87.png' },
-        { name: 'টাইমস অফ ইন্ডিয়া', url: 'https://timesofindia.indiatimes.com/', img: 'https://favicon.im/timesofindia.indiatimes.com?larger=true' },
-         { name: 'আনন্দবাজার', url: 'https://www.anandabazar.com/', img: 'https://www.anandabazar.com/assets/images/favicon.png' },
-         { name: 'ডন পাকিস্থান', url: 'https://www.dawn.com/', img: 'https://www.dawn.com/favicon.ico' },
-         { name: 'টাইমস', url: 'https://time.com/', img: 'https://time.com/favicon.ico' },
-         { name: 'আলজাজিরা', url: 'https://www.aljazeera.com/', img: 'https://www.aljazeera.com/favicon_aje.ico' },
-         { name: 'রয়টার্স', url: 'https://www.reuters.com/', img: 'https://www.reuters.com/favicon.ico' },
+        { name: 'টাইমস অফ ইন্ডিয়া', url: 'https://timesofindia.indiatimes.com/', img: 'https://favicon.im/timesofindia.indiatimes.com?larger=true' },
+        { name: 'আনন্দবাজার', url: 'https://www.anandabazar.com/', img: 'https://www.anandabazar.com/assets/images/favicon.png' },
+        { name: 'ডন পাকিস্থান', url: 'https://www.dawn.com/', img: 'https://www.dawn.com/favicon.ico' },
+        { name: 'টাইমস', url: 'https://time.com/', img: 'https://time.com/favicon.ico' },
+        { name: 'আলজাজিরা', url: 'https://www.aljazeera.com/', img: 'https://www.aljazeera.com/favicon_aje.ico' },
+        { name: 'রয়টার্স', url: 'https://www.reuters.com/', img: 'https://www.reuters.com/favicon.ico' },
     ];
 
-   // ২. এআই ও এডিট 
+    // ২. এআই ও এডিট 
     const aiLinks = [
         { name: 'জেমিনি', url: 'https://gemini.google.com', img: 'https://www.google.com/s2/favicons?domain=gemini.google.com' },
         { name: 'চ্যাটজিপিটি', url: 'https://chatgpt.com', img: 'https://chatgpt.com/favicon.ico' },
@@ -157,10 +179,10 @@
         { name: 'ইং টু বাংলা', url: 'https://translate.google.com/?hl=bn&sl=auto&tl=bn&op=translate', img: 'https://translate.google.com/favicon.ico' },
         { name: 'বাংলা টু ইং', url: 'https://translate.google.com/?sl=bn&tl=en&op=translate', img: 'https://translate.google.com/favicon.ico' },
         { name: 'ট্রিকস বিডি', url: 'https://trickbd.com/', img: 'https://trickbd.com/wp-content/uploads/2019/04/19/logo-200x200.png' },
-        { name: 'সামহয়ার ইন ব্লোগ', url: 'https://www.somewhereinblog.net/', img: 'https://www.somewhereinblog.net/favicon.ico' },
+        { name: 'সামহয়ার ইন ব্লোগ', url: 'https://www.somewhereinblog.net/', img: 'https://www.somewhereinblog.net/favicon.ico' },
         { name: 'কোরা', url: 'https://bn.quora.com/', img: 'https://bn.quora.com/favicon.ico' },
         { name: 'টেকজুম', url: 'https://techzoom.tv/telecom/', img: 'https://i0.wp.com/techzoom.tv/wp-content/uploads/2024/04/cropped-Asset-6-8.png?fit=32%2C32&ssl=1' },
-        { name: 'প্রাইজবন্ড যাচাই', url: 'https://prizebond.ird.gov.bd/', img: 'https://i0.wp.com/techzoom.tv/wp-content/uploads/2024/04/cropped-Asset-6-8.png?fit=32%2C32&ssl=1' },
+        { name: 'প্রাইজবন্ড যাচাই', url: 'https://prizebond.ird.gov.bd/', img: 'https://prizebond.ird.gov.bd/favicon.ico' },
     ];
 
     // ৪. কেনাকাটা তালিকা
@@ -180,14 +202,13 @@
         { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: '/d.ico' },
         { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: '/r.ico' },
         { name: 'মেটেরিয়া মেডিকা', url: 'https://www-homeoint-org.translate.goog/books/boericmm/index.htm?_x_tr_sch=http&_x_tr_sl=en&_x_tr_tl=bn&_x_tr_hl=en&_x_tr_pto=wapp', img: 'http://homeoint.org/favicon.ico' },
-        { name: 'আওয়ার বিডি', url: 'https://newourbd.blogspot.com/p/bn.html', img: 'https://newourbd.blogspot.com/favicon.ico' },
-        { name: 'মিলন ব্লোগ', url: 'azmilon.blogspot.com', img: 'https://azmilon.blogspot.com/favicon.ico' },
+        { name: 'আওয়ার বিডি', url: 'https://newourbd.blogspot.com/p/bn.html', img: 'https://newourbd.blogspot.com/favicon.ico' },
+        { name: 'মিলন ব্লোগ', url: 'https://azmilon.blogspot.com', img: 'https://azmilon.blogspot.com/favicon.ico' },
         { name: 'মিলন শপিফাই', url: 'https://azmilon.wordpress.com/2024/10/04/shopify-tutorials/', img: 'https://s1.wp.com/i/favicon.ico' },
         { name: 'মিলন ব্লোগ পোষ্ট', url: 'https://www.blogger.com/blog/posts/9000347848086479111?hl=en&tab=jj', img: 'https://azmilon.blogspot.com/favicon.ico' },
         { name: 'সিট ফাউন্ডেশন রেজাল্ট', url: 'https://sitfoundation.blogspot.com/p/blog-page.html', img: '/s.ico' },
         { name: 'এমএসআইটি', url: 'http://msitbd.blogspot.com/', img: 'https://msitbd.blogspot.com/favicon.ico' },
         { name: 'এমএসআইটি স্টডেন্ট একাউন্ট', url: 'https://docs.google.com/spreadsheets/d/1PVWV_ByuSVzcdjRkQLHB0T6jJz9p_uGYdhGLXXAxYVs/pubhtml', img: '/m.ico' },
-            
     ];
 
     // ৬. হোস্টিং তালিকা
@@ -224,7 +245,6 @@
         
         let displayLinks = links || [];
 
-        // প্রথম ৯টি লিঙ্ক সরাসরি গ্রিডে দেখাবে
         for(let i=0; i<Math.min(9, displayLinks.length); i++) {
             let item = displayLinks[i];
             html += `<a href="${item.url}" class="link-item" target="_blank">
@@ -233,7 +253,6 @@
             </a>`;
         }
 
-        // More বাটন যোগ করা
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
                 <span>More</span>
@@ -241,7 +260,6 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        // ১০ নম্বর লিঙ্ক থেকে বাকিগুলো More সেকশনে যাবে
         if (displayLinks.length > 9) {
             for(let i=9; i < displayLinks.length; i++) {
                 let item = displayLinks[i];
