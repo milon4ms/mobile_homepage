@@ -214,4 +214,176 @@
         { name: 'We transfer', url: 'https://wetransfer.com', img: 'https://www.google.com/s2/favicons?domain=wetransfer.com' },
         { name: 'file.io', url: 'https://www.file.io', img: 'f.ico' },
         { name: 'গিটহাব', url: 'https://github.com/milon4ms/neemoil', img: 'https://github.com/favicon.ico' },
-        { name: 'ফ্রিডোমেইন', url: '
+        { name: 'ফ্রিডোমেইন', url: 'https://freedns.afraid.org/subdomain', img: 'https://www.google.com/s2/favicons?domain=freedns.afraid.org' },
+        { name: 'infinityfree', url: 'https://www.infinityfree.com', img: 'https://www.google.com/s2/favicons?domain=infinityfree.com' },
+        { name: 'freehostia', url: 'https://www.freehostia.com', img: 'https://www.google.com/s2/favicons?domain=freehostia.com' },
+        { name: 'ifreehost.com', url: 'https://ifreehost.com', img: 'https://www.google.com/s2/favicons?domain=ifreehost.com' },
+        { name: 'AWARDSPACE', url: 'https://www.awardspace.com', img: 'https://www.awardspace.com/favicon.ico' }
+    ];
+
+    const businessLinks = [
+        { name: 'নির্ভীক বাজার-মু', url: 'https://nirvikbazar.mooo.com', img: 'https://nirvikbazar.mooo.com/favicon.ico' },
+        { name: 'নির্ভীক নিমতেল', url: 'https://neemoil.mooo.com/', img: 'https://neemoil.mooo.com/favicon.ico' },
+        { name: 'নির্ভীক বাজার old', url: 'https://nirvikbazar.kesug.com/', img: 'n.ico' },
+        { name: 'ইভেন্ট ম্যানেজার', url: 'https://eventsmanager.facebook.com/events_manager2/list/dataset/3774300972716166/overview?business_id=681199151252789&nav_source#', img: 'https://facebook.com/favicon.ico' },
+        { name: 'এ্যড ম্যানেজার', url: 'https://adsmanager.facebook.com', img: 'https://facebook.com/favicon.ico' },
+        { name: 'DropShipping', url: '#', img: 'https://www.google.com/s2/favicons?domain=www.dropshipping.com.bd' },
+        { name: 'ShopBase BD', url: 'https://www.shopbase.com', img: 'https://www.google.com/s2/favicons?domain=shopbasebd.com' },
+        { name: 'goodearnbd', url: 'https://goodearnbd.com/customer/reselling/index', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' }
+    ];
+
+    // ৩. বিনোদন ট্যাবের নতুন ডাটা
+    const freeTvRadioLinks = [
+        { name: 'জাগো বিডি', url: 'https://www.jagobd.com/', img: 'https://www.jagobd.com/favicon.ico' },
+        { name: 'বঙ্গ বিডি', url: 'https://bongobd.com/', img: 'https://bongobd.com/favicon.ico' },
+        { name: 'বায়োস্কোপ', url: 'https://www.bioscopelive.com/', img: 'https://www.bioscopelive.com/favicon.ico' },
+        { name: 'রেডিও ফুর্তি', url: 'https://radiofoorti.fm/', img: 'https://radiofoorti.fm/favicon.ico' },
+        { name: 'এবিসি রেডিও', url: 'http://abcradio.fm/', img: 'https://www.google.com/s2/favicons?domain=abcradio.fm' },
+        { name: 'সময় টিভি', url: 'https://www.somoynews.tv/tv', img: 'https://www.somoynews.tv/favicon.ico' },
+        { name: 'এনটিভি', url: 'https://www.ntvbd.com/livetv', img: 'https://www.ntvbd.com/favicon.ico' },
+        { name: 'চ্যানেল আই', url: 'https://www.channelionline.com/live-tv/', img: 'https://www.channelionline.com/favicon.ico' },
+    ];
+
+    const ytDownloaderLinks = [
+        { name: 'ইউটিউব', url: 'https://www.youtube.com/', img: 'https://www.youtube.com/favicon.ico' },
+        { name: 'SaveFrom.net', url: 'https://en.savefrom.net/', img: 'https://en.savefrom.net/favicon.ico' },
+        { name: 'Y2mate', url: 'https://www.y2mate.com/', img: 'https://www.y2mate.com/favicon.ico' },
+        { name: 'SnapSave', url: 'https://snapsave.io/', img: 'https://snapsave.io/favicon.ico' },
+        { name: 'KeepVid', url: 'https://keepv.id/', img: 'https://keepv.id/favicon.ico' },
+        { name: 'YT MP3', url: 'https://ytmp3.nu/', img: 'https://ytmp3.nu/favicon.ico' },
+    ];
+
+    const othersFunLinks = [
+        { name: 'হইচই', url: 'https://www.hoichoi.tv/', img: 'https://www.hoichoi.tv/favicon.ico' },
+        { name: 'চরকি', url: 'https://www.chorki.com/', img: 'https://www.chorki.com/favicon.ico' },
+        { name: 'টফি', url: 'https://toffeelive.com/', img: 'https://toffeelive.com/favicon.ico' },
+        { name: 'নেটফ্লিক্স', url: 'https://www.netflix.com/', img: 'https://www.netflix.com/favicon.ico' },
+        { name: 'টিকটক', url: 'https://www.tiktok.com/', img: 'https://www.tiktok.com/favicon.ico' },
+        { name: 'গেমস ২৪', url: 'https://www.crazygames.com/', img: 'https://www.crazygames.com/favicon.ico' },
+    ];
+
+    function createCategoryHTML(catName, catIndex, links = null) {
+        let html = `<div class="category">
+            <div class="cat-title">${catName}</div>
+            <div class="link-grid">`;
+        
+        let displayLinks = links || [];
+
+        for(let i=0; i<Math.min(9, displayLinks.length); i++) {
+            let item = displayLinks[i];
+            html += `<a href="${item.url}" class="link-item" target="_blank">
+                <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
+                <span>${item.name}</span>
+            </a>`;
+        }
+
+        html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
+                <div class="icon-box more-btn-box">📂</div>
+                <span>More</span>
+            </div>
+        </div>
+        <div id="more-${catIndex}" class="more-items">`;
+        
+        if (displayLinks.length > 9) {
+            for(let i=9; i < displayLinks.length; i++) {
+                let item = displayLinks[i];
+                html += `<a href="${item.url}" class="link-item" target="_blank">
+                    <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
+                    <span>${item.name}</span>
+                </a>`;
+            }
+        }
+        
+        html += `</div></div>`;
+        return html;
+    }
+
+    function init() {
+        // ট্যাব ১ (হোম - সকল লিঙ্ক অপরিবর্তিত)
+        let tab1 = document.getElementById('tab1');
+        let content1 = createCategoryHTML(`সংবাদপত্র`, `t1-news`, newsLinks);
+        content1 += createCategoryHTML(`এআই ও সামাজিক`, `t1-ai`, aiLinks);
+        content1 += createCategoryHTML(`টুলস ও ম্যাগাজিন`, `t1-tools`, toolsLinks);
+        content1 += createCategoryHTML(`কেনাকাটা ও অন্যান্য`, `t1-shopping`, shoppingLinks);
+        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
+        tab1.innerHTML = content1;
+
+        // ট্যাব ২ (পেশা - সকল লিঙ্ক অপরিবর্তিত)
+        let tab2 = document.getElementById('tab2');
+        let content2 = createCategoryHTML(`হোমিওপ্যাথি`, `t2-homeo`, homeoLinks);
+        content2 += createCategoryHTML(`হোস্টিং`, `t2-host`, hostingLinks);
+        content2 += createCategoryHTML(`বিজনেস`, `t2-biz`, businessLinks);
+        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
+        tab2.innerHTML = content2;
+
+        // ট্যাব ৩ (বিনোদন - নতুন সাজানো)
+        let tab3 = document.getElementById('tab3');
+        let content3 = createCategoryHTML(`ফ্রি অনলাইন টিভি ও রেডিও`, `t3-tv`, freeTvRadioLinks);
+        content3 += createCategoryHTML(`ইউটিউব ও ডাউনলোড`, `t3-yt`, ytDownloaderLinks);
+        content3 += createCategoryHTML(`অন্যান্য বিনোদন`, `t3-other`, othersFunLinks);
+        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
+        tab3.innerHTML = content3;
+
+        loadPersonalLinks();
+    }
+
+    function openTab(evt, tabName) {
+        currentTab = tabName;
+        document.querySelectorAll(".content-section").forEach(s => s.style.display = "none");
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    function toggleMore(id) {
+        document.getElementById(id).classList.toggle("show");
+    }
+
+    function addNewLink() {
+        let name = prompt("লিংকের নাম:");
+        let url = prompt("URL (http:// সহ):");
+        if(name && url) {
+            let links = JSON.parse(localStorage.getItem(currentTab) || "[]");
+            links.push({name, url});
+            localStorage.setItem(currentTab, JSON.stringify(links));
+            loadPersonalLinks();
+        }
+    }
+
+    function loadPersonalLinks() {
+        ['tab1', 'tab2', 'tab3'].forEach(tabId => {
+            let grid = document.getElementById(`personal-${tabId}`);
+            if(!grid) return;
+            let links = JSON.parse(localStorage.getItem(tabId) || "[]");
+            grid.innerHTML = links.map((link, index) => `
+                <div class="link-item">
+                    <a href="${link.url}" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div class="icon-box">🔗</div>
+                        <span>${link.name}</span>
+                    </a>
+                    <span class="delete-btn" onclick="deleteLink('${tabId}', ${index})">মুছে ফেলুন</span>
+                </div>
+            `).join('');
+        });
+    }
+
+    function deleteLink(tabId, index) {
+        if(confirm("আপনি কি এই লিংকটি মুছে ফেলতে চান?")) {
+            let links = JSON.parse(localStorage.getItem(tabId));
+            links.splice(index, 1);
+            localStorage.setItem(tabId, JSON.stringify(links));
+            loadPersonalLinks();
+        }
+    }
+
+    function toggleTheme() {
+        document.body.setAttribute('data-theme', 
+            document.body.getAttribute('data-theme') === 'dark' ? '' : 'dark'
+        );
+    }
+
+    init();
+</script>
+
+</body>
+</html>
