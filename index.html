@@ -114,10 +114,10 @@
 </header>
 
 <div class="tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'tab1')">ট্যাব ১</button>
-    <button class="tab-btn" onclick="openTab(event, 'tab2')">ট্যাব ২</button>
-    <button class="tab-btn" onclick="openTab(event, 'tab3')">ট্যাব ৩</button>
-    <button class="tab-btn add-link-btn" onclick="addNewLink()">+ অ্যাড</button>
+    <button class="tab-btn active" onclick="openTab(event, 'tab1')">হোম</button>
+    <button class="tab-btn" onclick="openTab(event, 'tab2')"> পেশা</button>
+    <button class="tab-btn" onclick="openTab(event, 'tab3')"> বিনোদন</button>
+    <button class="tab-btn add-link-btn" onclick="addNewLink()">+ লিংক</button>
 </div>
 
 <div class="main-content">
@@ -198,26 +198,26 @@
     // ৫. হোমিওপ্যাথি তালিকা
     const homeoLinks = [
         { name: 'নির্ভীক হোমিও', url: 'http://nirvik.mooo.com/', img: '/faviconnirvik.ico' },
-        { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: '🔗' },
-        { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: '/d.ico' },
-        { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: '/r.ico' },
+        { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: 'h.ico' },
+        { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: 'd.ico' },
+        { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: 'r.ico' },
         { name: 'মেটেরিয়া মেডিকা', url: 'https://www-homeoint-org.translate.goog/books/boericmm/index.htm?_x_tr_sch=http&_x_tr_sl=en&_x_tr_tl=bn&_x_tr_hl=en&_x_tr_pto=wapp', img: 'http://homeoint.org/favicon.ico' },
         { name: 'আওয়ার বিডি', url: 'https://newourbd.blogspot.com/p/bn.html', img: 'https://newourbd.blogspot.com/favicon.ico' },
         { name: 'মিলন ব্লোগ', url: 'https://azmilon.blogspot.com', img: 'https://azmilon.blogspot.com/favicon.ico' },
         { name: 'মিলন শপিফাই', url: 'https://azmilon.wordpress.com/2024/10/04/shopify-tutorials/', img: 'https://s1.wp.com/i/favicon.ico' },
         { name: 'মিলন ব্লোগ পোষ্ট', url: 'https://www.blogger.com/blog/posts/9000347848086479111?hl=en&tab=jj', img: 'https://azmilon.blogspot.com/favicon.ico' },
-        { name: 'সিট ফাউন্ডেশন রেজাল্ট', url: 'https://sitfoundation.blogspot.com/p/blog-page.html', img: '/s.ico' },
+        { name: 'সিট ফাউন্ডেশন রেজাল্ট', url: 'https://sitfoundation.blogspot.com/p/blog-page.html', img: 's.ico' },
         { name: 'এমএসআইটি', url: 'http://msitbd.blogspot.com/', img: 'https://msitbd.blogspot.com/favicon.ico' },
-        { name: 'এমএসআইটি স্টডেন্ট একাউন্ট', url: 'https://docs.google.com/spreadsheets/d/1PVWV_ByuSVzcdjRkQLHB0T6jJz9p_uGYdhGLXXAxYVs/pubhtml', img: '/m.ico' },
+        { name: 'এমএসআইটি স্টডেন্ট একাউন্ট', url: 'https://docs.google.com/spreadsheets/d/1PVWV_ByuSVzcdjRkQLHB0T6jJz9p_uGYdhGLXXAxYVs/pubhtml', img: 'm.ico' },
     ];
 
     // ৬. হোস্টিং তালিকা
     const hostingLinks = [
         { name: 'গুগল ড্রাইভ', url: 'https://drive.google.com', img: 'https://www.google.com/s2/favicons?domain=drive.google.com' },
         { name: 'ওয়ান ড্রাইভ', url: 'https://onedrive.live.com', img: 'https://www.google.com/s2/favicons?domain=onedrive.live.com' },
-        { name: 'প্রম্পট', url: 'https://azmilon.blogspot.com/2026/04/blog-post.html', img: '/p.ico' },
+        { name: 'প্রম্পট', url: 'https://azmilon.blogspot.com/2026/04/blog-post.html', img: 'p.ico' },
         { name: 'We transfer', url: 'https://wetransfer.com', img: 'https://wetransfer.com/favicon.ico' },
-        { name: 'file.io', url: 'https://www.file.io', img: '/f.ico' },
+        { name: 'file.io', url: 'https://www.file.io', img: 'f.ico' },
         { name: 'গিটহাব', url: 'https://github.com/milon4ms/neemoil', img: 'https://github.com/favicon.ico' },
         { name: 'ফ্রিডোমেইন', url: 'https://freedns.afraid.org/subdomain', img: 'https://www.google.com/s2/favicons?domain=freedns.afraid.org' },
         { name: 'infinityfree', url: 'https://www.infinityfree.com', img: 'https://www.google.com/s2/favicons?domain=infinityfree.com' },
