@@ -119,7 +119,7 @@
 <script>
     let currentTab = 'tab1';
 
-    // ১. হোম ট্যাবের ডাটা (অপরিবর্তিত)
+    // ১. হোম ট্যাব (অপরিবর্তিত)
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -135,10 +135,10 @@
         { name: 'বিডি নিউজ২৪', url: 'https://bangla.bdnews24.com', img: 'https://www.google.com/s2/favicons?domain=bangla.bdnews24.com' },
         { name: 'বিবিসি বাংলা', url: 'https://www.bbc.com/bengali', img: 'https://www.bbc.com/favicon.ico' },
         { name: 'পার্সটুডে', url: 'https://parstoday.ir/bn/news/latest_news', img: 'https://upload.wikimedia.org/wikipedia/bn/4/4d/%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%9F%E0%A7%81%E0%A6%A1%E0%A7%87.png' },
-        { name: 'টাইমস অফ ইন্ডিয়া', url: 'https://timesofindia.indiatimes.com/', img: 'https://favicon.im/timesofindia.indiatimes.com?larger=true' },
+        { name: 'timesofindia', url: 'https://timesofindia.indiatimes.com/', img: 'https://favicon.im/timesofindia.indiatimes.com?larger=true' },
         { name: 'আনন্দবাজার', url: 'https://www.anandabazar.com/', img: 'https://www.anandabazar.com/assets/images/favicon.png' },
         { name: 'ডন পাকিস্থান', url: 'https://www.dawn.com/', img: 'https://www.dawn.com/favicon.ico' },
-        { name: 'টাইমস', url: 'https://time.com/', img: 'https://time.com/favicon.ico' },
+        { name: 'times', url: 'https://time.com/', img: 'https://time.com/favicon.ico' },
         { name: 'আলজাজিরা', url: 'https://www.aljazeera.com/', img: 'https://www.aljazeera.com/favicon_aje.ico' },
         { name: 'রয়টার্স', url: 'https://www.reuters.com/', img: 'https://www.reuters.com/favicon.ico' },
     ];
@@ -191,7 +191,7 @@
         { name: 'সেভস', url: 'https://www.facebook.com/saved/', img: 'https://www.google.com/s2/favicons?domain=facebook.com' },
     ];
 
-    // ২. পেশা ট্যাবের ডাটা (অপরিবর্তিত)
+    // ২. পেশা ট্যাব (অপরিবর্তিত)
     const homeoLinks = [
         { name: 'নির্ভীক হোমিও', url: 'http://nirvik.mooo.com/', img: 'faviconnirvik.ico' },
         { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: 'h.ico' },
@@ -232,34 +232,104 @@
         { name: 'goodearnbd', url: 'https://goodearnbd.com/customer/reselling/index', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' }
     ];
 
-    // ৩. বিনোদন ট্যাবের নতুন ডাটা
-    const freeTvRadioLinks = [
-        { name: 'জাগো বিডি', url: 'https://www.jagobd.com/', img: 'https://www.jagobd.com/favicon.ico' },
-        { name: 'বঙ্গ বিডি', url: 'https://bongobd.com/', img: 'https://bongobd.com/favicon.ico' },
-        { name: 'বায়োস্কোপ', url: 'https://www.bioscopelive.com/', img: 'https://www.bioscopelive.com/favicon.ico' },
-        { name: 'রেডিও ফুর্তি', url: 'https://radiofoorti.fm/', img: 'https://radiofoorti.fm/favicon.ico' },
-        { name: 'এবিসি রেডিও', url: 'http://abcradio.fm/', img: 'https://www.google.com/s2/favicons?domain=abcradio.fm' },
-        { name: 'সময় টিভি', url: 'https://www.somoynews.tv/tv', img: 'https://www.somoynews.tv/favicon.ico' },
-        { name: 'এনটিভি', url: 'https://www.ntvbd.com/livetv', img: 'https://www.ntvbd.com/favicon.ico' },
-        { name: 'চ্যানেল আই', url: 'https://www.channelionline.com/live-tv/', img: 'https://www.channelionline.com/favicon.ico' },
+    // ৩. বিনোদন ট্যাব (আপনার নতুন নির্দেশনা অনুযায়ী)
+    const tvLinks = [
+        { name: 'BDIPTV', url: 'http://tv.bdiptv.net/', img: 'https://www.google.com/s2/favicons?domain=bdiptv.net' },
+        { name: 'JagoBD', url: 'https://www.jagobd.com/', img: 'https://www.jagobd.com/favicon.ico' },
+        { name: 'CTG IPTV', url: 'https://ctgiptv.com/', img: 'https://ctgiptv.com/favicon.ico' },
+        { name: 'IPTV IDN', url: 'http://iptvidn.com/', img: 'https://www.google.com/s2/favicons?domain=iptvidn.com' },
+        { name: 'Al Jazeera', url: 'https://www.aljazeera.com/live', img: 'https://www.aljazeera.com/favicon.ico' },
+        { name: 'BBC News', url: 'https://www.bbc.com/news/10318236', img: 'https://www.bbc.com/favicon.ico' },
+        { name: 'France 24', url: 'https://www.france24.com/en/live', img: 'https://www.france24.com/favicon.ico' },
+        { name: 'DW News', url: 'https://www.dw.com/en/live-tv/s-100825', img: 'https://www.dw.com/favicon.ico' },
+        { name: 'Sky News', url: 'https://news.sky.com/watch-live', img: 'https://news.sky.com/favicon.ico' },
+        { name: 'NHK World', url: 'https://www3.nhk.or.jp/nhkworld/en/live/', img: 'https://www3.nhk.or.jp/favicon.ico' },
+        { name: 'Bloomberg', url: 'https://www.bloomberg.com/live', img: 'https://www.bloomberg.com/favicon.ico' },
+        { name: 'ABC News', url: 'https://abcnews.go.com/Live', img: 'https://abcnews.go.com/favicon.ico' },
+        { name: 'RT News', url: 'https://www.rt.com/on-air/', img: 'https://www.rt.com/favicon.ico' },
+        { name: 'CGTN', url: 'https://www.cgtn.com/live', img: 'https://www.cgtn.com/favicon.ico' },
+        { name: 'Euronews', url: 'https://www.euronews.com/live', img: 'https://www.euronews.com/favicon.ico' },
+        { name: 'Arirang TV', url: 'https://www.arirang.com/player/live.asp', img: 'https://www.arirang.com/favicon.ico' },
+        { name: 'NASA TV', url: 'https://www.nasa.gov/nasatv', img: 'https://www.nasa.gov/favicon.ico' },
+        { name: 'CCTV 4', url: 'https://tv.cctv.com/live/cctv4/', img: 'https://tv.cctv.com/favicon.ico' },
+        { name: 'KBS World', url: 'https://kbsworld.kbs.co.kr/live/live_main.php', img: 'https://kbsworld.kbs.co.kr/favicon.ico' },
+        { name: 'TRT World', url: 'https://www.trtworld.com/live', img: 'https://www.trtworld.com/favicon.ico' },
+        { name: 'Newsmax', url: 'https://www.newsmaxtv.com/', img: 'https://www.newsmax.com/favicon.ico' },
+        { name: 'CNA Live', url: 'https://www.channelnewsasia.com/watch-cna-live', img: 'https://www.channelnewsasia.com/favicon.ico' },
+        { name: 'Red Bull TV', url: 'https://www.redbull.com/int-en/tv/', img: 'https://www.redbull.com/favicon.ico' },
+        { name: 'Fashion TV', url: 'https://www.fashiontv.com/live/', img: 'https://www.fashiontv.com/favicon.ico' }
     ];
 
-    const ytDownloaderLinks = [
-        { name: 'ইউটিউব', url: 'https://www.youtube.com/', img: 'https://www.youtube.com/favicon.ico' },
-        { name: 'SaveFrom.net', url: 'https://en.savefrom.net/', img: 'https://en.savefrom.net/favicon.ico' },
-        { name: 'Y2mate', url: 'https://www.y2mate.com/', img: 'https://www.y2mate.com/favicon.ico' },
-        { name: 'SnapSave', url: 'https://snapsave.io/', img: 'https://snapsave.io/favicon.ico' },
-        { name: 'KeepVid', url: 'https://keepv.id/', img: 'https://keepv.id/favicon.ico' },
-        { name: 'YT MP3', url: 'https://ytmp3.nu/', img: 'https://ytmp3.nu/favicon.ico' },
+    const radioLinks = [
+        { name: 'Radio Garden', url: 'https://radio.garden/', img: 'https://radio.garden/favicon.ico' },
+        { name: 'Radio-BD', url: 'https://radio-bd.com/', img: 'https://radio-bd.com/favicon.ico' },
+        { name: 'BBC World', url: 'https://www.bbc.co.uk/sounds/play/live:bbc_world_service', img: 'https://www.bbc.co.uk/favicon.ico' },
+        { name: 'NPR News', url: 'https://www.npr.org/player/embed/6101416/6101416', img: 'https://www.npr.org/favicon.ico' },
+        { name: 'LBC UK', url: 'https://www.lbc.co.uk/radio/player/', img: 'https://www.lbc.co.uk/favicon.ico' },
+        { name: 'Radio Swiss Jazz', url: 'https://www.radioswissjazz.ch/en', img: 'https://www.radioswissjazz.ch/favicon.ico' },
+        { name: '101.fm', url: 'https://101.fm/', img: 'https://101.fm/favicon.ico' },
+        { name: 'Capital FM', url: 'https://www.capitalfm.com/', img: 'https://www.capitalfm.com/favicon.ico' },
+        { name: 'Jazz24', url: 'https://www.jazz24.org/', img: 'https://www.jazz24.org/favicon.ico' },
+        { name: 'Absolute Radio', url: 'https://planetradio.co.uk/absolute-radio/player/', img: 'https://planetradio.co.uk/favicon.ico' },
+        { name: 'KIIS FM', url: 'https://www.iheart.com/live/1027-kiis-fm-185/', img: 'https://www.iheart.com/favicon.ico' },
+        { name: 'Heart Radio', url: 'https://www.heart.co.uk/', img: 'https://www.heart.co.uk/favicon.ico' },
+        { name: 'KEXP', url: 'https://www.kexp.org/', img: 'https://www.kexp.org/favicon.ico' },
+        { name: 'Classic FM', url: 'https://www.classicfm.com/', img: 'https://www.classicfm.com/favicon.ico' },
+        { name: 'Rai Radio 1', url: 'https://www.raiplaysound.it/radio1', img: 'https://www.rai.it/favicon.ico' },
+        { name: 'RNE Spain', url: 'https://www.rtve.es/play/radio/directo/radio-nacional/', img: 'https://www.rtve.es/favicon.ico' },
+        { name: 'CBC Radio', url: 'https://www.cbc.ca/listen/live-radio', img: 'https://www.cbc.ca/favicon.ico' },
+        { name: 'ABC Australia', url: 'https://www.abc.net.au/listen/live/news', img: 'https://www.abc.net.au/favicon.ico' },
+        { name: 'Radio Mirchi', url: 'https://www.radiomirchi.com/', img: 'https://www.radiomirchi.com/favicon.ico' },
+        { name: 'Radio Foorti', url: 'http://radiofoorti.fm/', img: 'http://radiofoorti.fm/favicon.ico' },
+        { name: 'Dhaka FM', url: 'https://dhakafm.com.bd/', img: 'https://dhakafm.com.bd/favicon.ico' },
+        { name: 'SomaFM', url: 'https://somafm.com/', img: 'https://somafm.com/favicon.ico' },
+        { name: 'FIP France', url: 'https://www.radiofrance.fr/fip', img: 'https://www.radiofrance.fr/favicon.ico' },
+        { name: 'WNYC', url: 'https://www.wnyc.org/', img: 'https://www.wnyc.org/favicon.ico' }
     ];
 
-    const othersFunLinks = [
-        { name: 'হইচই', url: 'https://www.hoichoi.tv/', img: 'https://www.hoichoi.tv/favicon.ico' },
-        { name: 'চরকি', url: 'https://www.chorki.com/', img: 'https://www.chorki.com/favicon.ico' },
-        { name: 'টফি', url: 'https://toffeelive.com/', img: 'https://toffeelive.com/favicon.ico' },
-        { name: 'নেটফ্লিক্স', url: 'https://www.netflix.com/', img: 'https://www.netflix.com/favicon.ico' },
-        { name: 'টিকটক', url: 'https://www.tiktok.com/', img: 'https://www.tiktok.com/favicon.ico' },
-        { name: 'গেমস ২৪', url: 'https://www.crazygames.com/', img: 'https://www.crazygames.com/favicon.ico' },
+    const movieLinks = [
+        { name: 'CircleFTP', url: 'http://new.circleftp.net/', img: 'https://www.google.com/s2/favicons?domain=circleftp.net' },
+        { name: 'ShowtimeBD', url: 'http://www.showtimebd.com/', img: 'https://www.google.com/s2/favicons?domain=showtimebd.com' },
+        { name: 'CandyBD', url: 'http://candybd.net/', img: 'https://www.google.com/s2/favicons?domain=candybd.net' },
+        { name: 'FTP 103', url: 'http://103.58.73.6/', img: '🔗' },
+        { name: 'Tubi TV', url: 'https://tubitv.com/', img: 'https://tubitv.com/favicon.ico' },
+        { name: 'Pluto TV', url: 'https://pluto.tv/', img: 'https://pluto.tv/favicon.ico' },
+        { name: 'Crackle', url: 'https://www.crackle.com/', img: 'https://www.crackle.com/favicon.ico' },
+        { name: 'Popcornflix', url: 'https://www.popcornflix.com/', img: 'https://www.popcornflix.com/favicon.ico' },
+        { name: 'Vudu Free', url: 'https://www.vudu.com/content/movies/free', img: 'https://www.vudu.com/favicon.ico' },
+        { name: 'Plex Free', url: 'https://www.plex.tv/watch-free/', img: 'https://www.plex.tv/favicon.ico' },
+        { name: 'Kanopy', url: 'https://www.kanopy.com/', img: 'https://www.kanopy.com/favicon.ico' },
+        { name: 'Hoopla', url: 'https://www.hoopladigital.com/', img: 'https://www.hoopladigital.com/favicon.ico' },
+        { name: 'Rakuten TV', url: 'https://www.rakuten.tv/en/channel/free', img: 'https://www.rakuten.tv/favicon.ico' },
+        { name: 'Peacock Free', url: 'https://www.peacocktv.com/', img: 'https://www.peacocktv.com/favicon.ico' },
+        { name: 'Filmzie', url: 'https://filmzie.com/', img: 'https://filmzie.com/favicon.ico' },
+        { name: 'DistroTV', url: 'https://www.distro.tv/', img: 'https://www.distro.tv/favicon.ico' },
+        { name: 'Xumo', url: 'https://www.xumo.tv/', img: 'https://www.xumo.tv/favicon.ico' },
+        { name: 'MyFlixer', url: 'https://myflixer.to/', img: 'https://myflixer.to/favicon.ico' },
+        { name: 'MovieStars', url: 'https://moviestars.to/', img: 'https://moviestars.to/favicon.ico' },
+        { name: 'SolarMovie', url: 'https://solarmovie.pe/', img: 'https://solarmovie.pe/favicon.ico' },
+        { name: 'FMovies', url: 'https://fmovies.to/', img: 'https://fmovies.to/favicon.ico' },
+        { name: 'Goku.to', url: 'https://goku.to/', img: 'https://goku.to/favicon.ico' },
+        { name: 'YesMovies', url: 'https://yesmovies.ag/', img: 'https://yesmovies.ag/favicon.ico' },
+        { name: 'Internet Archive', url: 'https://archive.org/details/movies', img: 'https://archive.org/favicon.ico' }
+    ];
+
+    const softwareLinks = [
+        { name: 'PortableApps', url: 'https://portableapps.com/', img: 'https://portableapps.com/favicon.ico' },
+        { name: 'FileHippo', url: 'https://filehippo.com/', img: 'https://filehippo.com/favicon.ico' },
+        { name: 'Softpedia', url: 'https://www.softpedia.com/', img: 'https://www.softpedia.com/favicon.ico' },
+        { name: 'Ninite', url: 'https://ninite.com/', img: 'https://ninite.com/favicon.ico' },
+        { name: 'GitHub', url: 'https://github.com/', img: 'https://github.com/favicon.ico' },
+        { name: 'SourceForge', url: 'https://sourceforge.net/', img: 'https://sourceforge.net/favicon.ico' },
+        { name: 'AlternativeTo', url: 'https://alternativeto.net/', img: 'https://alternativeto.net/favicon.ico' }
+    ];
+
+    const otherEntLinks = [
+        { name: 'Wikipedia', url: 'https://www.wikipedia.org/', img: 'https://www.wikipedia.org/favicon.ico' },
+        { name: 'TED Talks', url: 'https://www.ted.com/talks', img: 'https://www.ted.com/favicon.ico' },
+        { name: 'Duolingo', url: 'https://www.duolingo.com/', img: 'https://www.duolingo.com/favicon.ico' },
+        { name: 'Coursera', url: 'https://www.coursera.org/', img: 'https://www.coursera.org/favicon.ico' },
+        { name: 'Internet Archive', url: 'https://archive.org/', img: 'https://archive.org/favicon.ico' }
     ];
 
     function createCategoryHTML(catName, catIndex, links = null) {
@@ -268,8 +338,9 @@
             <div class="link-grid">`;
         
         let displayLinks = links || [];
+        let limit = 9;
 
-        for(let i=0; i<Math.min(9, displayLinks.length); i++) {
+        for(let i=0; i<Math.min(limit, displayLinks.length); i++) {
             let item = displayLinks[i];
             html += `<a href="${item.url}" class="link-item" target="_blank">
                 <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
@@ -284,8 +355,8 @@
         </div>
         <div id="more-${catIndex}" class="more-items">`;
         
-        if (displayLinks.length > 9) {
-            for(let i=9; i < displayLinks.length; i++) {
+        if (displayLinks.length > limit) {
+            for(let i=limit; i < displayLinks.length; i++) {
                 let item = displayLinks[i];
                 html += `<a href="${item.url}" class="link-item" target="_blank">
                     <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
@@ -299,30 +370,32 @@
     }
 
     function init() {
-        // ট্যাব ১ (হোম - সকল লিঙ্ক অপরিবর্তিত)
+        // ট্যাব ১
         let tab1 = document.getElementById('tab1');
-        let content1 = createCategoryHTML(`সংবাদপত্র`, `t1-news`, newsLinks);
-        content1 += createCategoryHTML(`এআই ও সামাজিক`, `t1-ai`, aiLinks);
-        content1 += createCategoryHTML(`টুলস ও ম্যাগাজিন`, `t1-tools`, toolsLinks);
-        content1 += createCategoryHTML(`কেনাকাটা ও অন্যান্য`, `t1-shopping`, shoppingLinks);
-        content1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
-        tab1.innerHTML = content1;
+        let c1 = createCategoryHTML(`সংবাদপত্র`, `t1-news`, newsLinks);
+        c1 += createCategoryHTML(`এআই ও সামাজিক`, `t1-ai`, aiLinks);
+        c1 += createCategoryHTML(`টুলস ও ম্যাগাজিন`, `t1-tools`, toolsLinks);
+        c1 += createCategoryHTML(`কেনাকাটা ও অন্যান্য`, `t1-shopping`, shoppingLinks);
+        c1 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab1"></div></div>`;
+        tab1.innerHTML = c1;
 
-        // ট্যাব ২ (পেশা - সকল লিঙ্ক অপরিবর্তিত)
+        // ট্যাব ২
         let tab2 = document.getElementById('tab2');
-        let content2 = createCategoryHTML(`হোমিওপ্যাথি`, `t2-homeo`, homeoLinks);
-        content2 += createCategoryHTML(`হোস্টিং`, `t2-host`, hostingLinks);
-        content2 += createCategoryHTML(`বিজনেস`, `t2-biz`, businessLinks);
-        content2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
-        tab2.innerHTML = content2;
+        let c2 = createCategoryHTML(`হোমিওপ্যাথি`, `t2-homeo`, homeoLinks);
+        c2 += createCategoryHTML(`হোস্টিং`, `t2-host`, hostingLinks);
+        c2 += createCategoryHTML(`বিজনেস`, `t2-biz`, businessLinks);
+        c2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
+        tab2.innerHTML = c2;
 
         // ট্যাব ৩ (বিনোদন - নতুন সাজানো)
         let tab3 = document.getElementById('tab3');
-        let content3 = createCategoryHTML(`ফ্রি অনলাইন টিভি ও রেডিও`, `t3-tv`, freeTvRadioLinks);
-        content3 += createCategoryHTML(`ইউটিউব ও ডাউনলোড`, `t3-yt`, ytDownloaderLinks);
-        content3 += createCategoryHTML(`অন্যান্য বিনোদন`, `t3-other`, othersFunLinks);
-        content3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
-        tab3.innerHTML = content3;
+        let c3 = createCategoryHTML(`টিভি (লাইভ)`, `t3-tv`, tvLinks);
+        c3 += createCategoryHTML(`রেডিও (লাইভ)`, `t3-radio`, radioLinks);
+        c3 += createCategoryHTML(`ফ্রি মুভি লাইব্রেরি`, `t3-movies`, movieLinks);
+        c3 += createCategoryHTML(`দরকারি সফটওয়্যার`, `t3-software`, softwareLinks);
+        c3 += createCategoryHTML(`অন্যান্য বিনোদন`, `t3-other`, otherEntLinks);
+        c3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
+        tab3.innerHTML = c3;
 
         loadPersonalLinks();
     }
