@@ -231,6 +231,16 @@
         { name: 'ShopBase BD', url: 'https://www.shopbase.com', img: 'https://www.google.com/s2/favicons?domain=shopbasebd.com' },
         { name: 'goodearnbd', url: 'https://goodearnbd.com/customer/reselling/index', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' }
     ];
+        const businessLinks = [
+        { name: 'নির্ভীক বাজার-মু', url: 'https://nirvikbazar.mooo.com', img: 'https://nirvikbazar.mooo.com/favicon.ico' },
+        { name: 'নির্ভীক নিমতেল', url: 'https://neemoil.mooo.com/', img: 'https://neemoil.mooo.com/favicon.ico' },
+        { name: 'নির্ভীক বাজার old', url: 'https://nirvikbazar.kesug.com/', img: 'n.ico' },
+        { name: 'ইভেন্ট ম্যানেজার', url: 'https://eventsmanager.facebook.com/events_manager2/list/dataset/3774300972716166/overview?business_id=681199151252789&nav_source#', img: 'https://facebook.com/favicon.ico' },
+        { name: 'এ্যড ম্যানেজার', url: 'https://adsmanager.facebook.com', img: 'https://facebook.com/favicon.ico' },
+        { name: 'DropShipping', url: '#', img: 'https://www.google.com/s2/favicons?domain=www.dropshipping.com.bd' },
+        { name: 'ShopBase BD', url: 'https://www.shopbase.com', img: 'https://www.google.com/s2/favicons?domain=shopbasebd.com' },
+        { name: 'goodearnbd', url: 'https://goodearnbd.com/customer/reselling/index', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' }
+    ];
 
     // ৩. বিনোদন ট্যাব (আপনার নতুন নির্দেশনা অনুযায়ী)
     const tvLinks = [
@@ -384,6 +394,7 @@
         let c2 = createCategoryHTML(`হোমিওপ্যাথি`, `t2-homeo`, homeoLinks);
         c2 += createCategoryHTML(`হোস্টিং`, `t2-host`, hostingLinks);
         c2 += createCategoryHTML(`বিজনেস`, `t2-biz`, businessLinks);
+        c2 += createCategoryHTML(`শিক্ষাবিষয়ক`, `t2-biz`, businessLinks);
         c2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
         tab2.innerHTML = c2;
 
