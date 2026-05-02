@@ -359,7 +359,7 @@
             for(let i=limit; i < displayLinks.length; i++) {
                 let item = displayLinks[i];
                 html += `<a href="${item.url}" class="link-item" target="_blank">
-                    <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
+                    <div class="icon-box">${(item.img && item.img.length > 1) ? `<img src="${item.img}">` : '🔗'}</div>
                     <span>${item.name}</span>
                 </a>`;
             }
