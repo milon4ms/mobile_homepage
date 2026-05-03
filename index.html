@@ -355,8 +355,7 @@
         { name: 'TED Talks', url: 'https://www.ted.com/talks', img: 'https://www.ted.com/favicon.ico' },
         { name: 'Duolingo', url: 'https://www.duolingo.com/', img: 'https://www.duolingo.com/favicon.ico' },
         { name: 'Coursera', url: 'https://www.coursera.org/', img: 'https://www.coursera.org/favicon.ico' },
-        { name: 'Internet Archive', url: 'https://archive.org/', img: 'https://archive.org/favicon.ico' }
-    ];
+          ];
 
     function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
@@ -419,7 +418,7 @@
         let c3 = createCategoryHTML(`টিভি (লাইভ)`, `t3-tv`, tvLinks);
         c3 += createCategoryHTML(`রেডিও (লাইভ)`, `t3-radio`, radioLinks);
         c3 += createCategoryHTML(`ডাউনলোড`, `t3-movies`, downloadLinks);
-        c3 += createCategoryHTML(`অন্যান্য বিনোদন`, `t3-other`, otherEntLinks);
+        c3 += createCategoryHTML(`অন্যান্য`, `t3-other`, otherEntLinks);
         c3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
         tab3.innerHTML = c3;
 
