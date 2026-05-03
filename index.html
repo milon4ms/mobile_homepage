@@ -292,7 +292,7 @@
         { name: 'NPR News USA', url: 'https://onlineradiobox.com/us/', img: 'https://onlineradiobox.com/favicon.ico' }
     ];
 
-    const movieLinks = [
+    const downlodLinks = [
         { name: 'CircleFTP', url: 'http://new.circleftp.net/', img: 'https://www.google.com/s2/favicons?domain=circleftp.net' },
         { name: 'ShowtimeBD', url: 'http://www.showtimebd.com/', img: 'https://www.google.com/s2/favicons?domain=showtimebd.com' },
         { name: 'CandyBD', url: 'http://candybd.net/', img: 'https://www.google.com/s2/favicons?domain=candybd.net' },
@@ -328,22 +328,7 @@
         { name: 'Aptoide Free Apps', url: 'https://en.aptoide.com/', img: 'https://en.aptoide.com/favicon.ico' }
     ];
 
-    const softwareLinks = [
-        { name: 'PortableApps', url: 'https://portableapps.com/', img: 'https://portableapps.com/favicon.ico' },
-        { name: 'FileHippo', url: 'https://filehippo.com/', img: 'https://filehippo.com/favicon.ico' },
-        { name: 'Softpedia', url: 'https://www.softpedia.com/', img: 'https://www.softpedia.com/favicon.ico' },
-        { name: 'Ninite', url: 'https://ninite.com/', img: 'https://ninite.com/favicon.ico' },
-        { name: 'GitHub', url: 'https://github.com/', img: 'https://github.com/favicon.ico' },
-        { name: 'SourceForge', url: 'https://sourceforge.net/', img: 'https://sourceforge.net/favicon.ico' },
-        { name: 'AlternativeTo', url: 'https://alternativeto.net/', img: 'https://alternativeto.net/favicon.ico' }
-    ];
-
-    const otherEntLinks = [
-        { name: 'Wikipedia', url: 'https://www.wikipedia.org/', img: 'https://www.wikipedia.org/favicon.ico' },
-        { name: 'TED Talks', url: 'https://www.ted.com/talks', img: 'https://www.ted.com/favicon.ico' },
-        { name: 'Duolingo', url: 'https://www.duolingo.com/', img: 'https://www.duolingo.com/favicon.ico' },
-        { name: 'Coursera', url: 'https://www.coursera.org/', img: 'https://www.coursera.org/favicon.ico' },
-    ];
+   
 
     function createCategoryHTML(catName, catIndex, links = null) {
         let html = `<div class="category">
@@ -405,9 +390,7 @@
         let tab3 = document.getElementById('tab3');
         let c3 = createCategoryHTML(`টিভি (লাইভ)`, `t3-tv`, tvLinks);
         c3 += createCategoryHTML(`রেডিও (লাইভ)`, `t3-radio`, radioLinks);
-        c3 += createCategoryHTML(`ফ্রি মুভি লাইব্রেরি`, `t3-movies`, movieLinks);
-        c3 += createCategoryHTML(`দরকারি সফটওয়্যার`, `t3-software`, softwareLinks);
-        c3 += createCategoryHTML(`অন্যান্য বিনোদন`, `t3-other`, otherEntLinks);
+        c3 += createCategoryHTML(`ডাউনলোড`, `t3-movies`, downlodLinks);
         c3 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab3"></div></div>`;
         tab3.innerHTML = c3;
 
