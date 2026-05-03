@@ -307,7 +307,7 @@
         { name: 'ShowtimeBD', url: 'http://www.showtimebd.com/', img: 'https://www.google.com/s2/favicons?domain=showtimebd.com' },
         { name: 'CandyBD', url: 'http://candybd.net/', img: 'https://www.google.com/s2/favicons?domain=candybd.net' },
         { name: 'FTP 103', url: 'http://103.58.73.6/', img: '🔗' },
-        { name: 'Internet Archive', url: 'https://archive.org/details/movies', img: 'https://archive.org/favicon.ico' }
+        { name: 'Internet Archive', url: 'https://archive.org/details/movies', img: 'https://archive.org/favicon.ico' },
         { name: 'Youtube download', url: 'https://video.genyt.net/', img: 'https://pluto.tv/favicon.ico' },
         { name: 'Video Download', url: 'https://en1.savefrom.net/17Bb/', img: 'https://www.crackle.com/favicon.ico' },
         { name: 'বই ডাউনলোড', url: 'https://www.amarboi.com/', img: 'https://www.popcornflix.com/favicon.ico' },
@@ -377,7 +377,7 @@
         for(let i=0; i<Math.min(limit, displayLinks.length); i++) {
             let item = displayLinks[i];
             html += `<a href="${item.url}" class="link-item" target="_blank">
-                <div class="icon-box">${(item.img && item.img.length > 5) ? `<img src="${item.img}">` : '🔗'}</div>
+                <div class="icon-box">${(item.img && item.img.length > ০) ? `<img src="${item.img}">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
