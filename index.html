@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">length > 5
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,7 @@
         .icon-box img { width: 24px; height: 24px; object-fit: contain; }
 
         @media screen and (max-width: 480px) {
-            .link-grid { gap: 5px; }
+            .link-grid { gap: 5px; grid-template-columns: repeat(4, 1fr); }
             .icon-box { width: 52px; height: 52px; border-radius: 12px; }
             .icon-box img { width: 32px; height: 32px; }
             .link-item { font-size: 10px; }
@@ -117,9 +117,7 @@
 </footer>
 
 <script>
-    let currentTab = 'tab1';
-
-    // ১. হোম ট্যাব (অপরিবর্তিত)
+    // হোম ট্যাব (অপরিবর্তিত)
     const newsLinks = [
         { name: 'ইত্তেফাক', url: 'https://www.ittefaq.com.bd', img: 'https://www.ittefaq.com.bd/favicon.ico' },
         { name: 'প্রথম আলো', url: 'https://www.prothomalo.com', img: 'https://www.prothomalo.com/favicon.ico' },
@@ -169,7 +167,7 @@
         { name: 'ট্রিকস বিডি', url: 'https://trickbd.com/', img: 'https://trickbd.com/wp-content/uploads/2019/04/19/logo-200x200.png' },
         { name: 'সামহয়ার ইন ব্লোগ', url: 'https://www.somewhereinblog.net/', img: 'https://www.google.com/s2/favicons?domain=www.somewhereinblog.net' },
         { name: 'কোরা', url: 'https://bn.quora.com/', img: 'https://bn.quora.com/favicon.ico' },
-        { name: 'ইমেজ টু টেক্সট', url: 'https://www.imagetotext.info/', img: 'i.ico' },
+        { name: 'ইমেজ টু টেক্সট', url: 'https://www.imagetotext.info/', img: 'https://www.google.com/s2/favicons?domain=imagetotext.info' },
         { name: 'টেকজুম', url: 'https://techzoom.tv/telecom/', img: 'https://i0.wp.com/techzoom.tv/wp-content/uploads/2024/04/cropped-Asset-6-8.png?fit=32%2C32&ssl=1' },
         { name: 'প্রাইজবন্ড যাচাই', url: 'https://prizebond.ird.gov.bd/', img: 'https://prizebond.ird.gov.bd/favicon.ico' },
         { name: 'বাংলা টু ইং', url: 'https://translate.google.com/?sl=bn&tl=en&op=translate', img: 'https://translate.google.com/favicon.ico' },
@@ -191,28 +189,28 @@
         { name: 'সেভস', url: 'https://www.facebook.com/saved/', img: 'https://www.google.com/s2/favicons?domain=facebook.com' },
     ];
 
-    // ২. পেশা ট্যাব (অপরিবর্তিত)
+    // পেশা ট্যাব
     const homeoLinks = [
-        { name: 'নির্ভীক হোমিও', url: 'http://nirvik.mooo.com/', img: 'faviconnirvik.ico' },
-        { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: 'h.ico' },
-        { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: 'd.ico' },
-        { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: 'r.ico' },
+        { name: 'নির্ভীক হোমিও', url: 'http://nirvik.mooo.com/', img: 'https://www.google.com/s2/favicons?domain=nirvik.mooo.com' },
+        { name: 'হোমিও AI', url: 'https://homeoai.blogspot.com/2025/09/blog-post.html', img: 'https://www.google.com/s2/favicons?domain=homeoai.blogspot.com' },
+        { name: 'ডঃ আসাদ', url: 'https://doctorashad.blogspot.com/', img: 'https://www.google.com/s2/favicons?domain=doctorashad.blogspot.com' },
+        { name: 'রোগ-মেডিকা', url: 'https://doctorashad.blogspot.com/2021/10/blog-post.html', img: 'https://www.google.com/s2/favicons?domain=doctorashad.blogspot.com' },
         { name: 'মেটেরিয়া মেডিকা', url: 'https://www-homeoint-org.translate.goog/books/boericmm/index.htm?_x_tr_sch=http&_x_tr_sl=en&_x_tr_tl=bn&_x_tr_hl=en&_x_tr_pto=wapp', img: 'https://www.google.com/s2/favicons?domain=homeoint.org' },
         { name: 'আওয়ার বিডি', url: 'https://newourbd.blogspot.com/p/bn.html', img: 'https://newourbd.blogspot.com/favicon.ico' },
         { name: 'মিলন ব্লোগ', url: 'https://azmilon.blogspot.com', img: 'https://azmilon.blogspot.com/favicon.ico' },
         { name: 'মিলন শপিফাই', url: 'https://azmilon.wordpress.com/2024/10/04/shopify-tutorials/', img: 'https://s1.wp.com/i/favicon.ico' },
         { name: 'মিলন ব্লোগ পোষ্ট', url: 'https://www.blogger.com/blog/posts/9000347848086479111?hl=en&tab=jj', img: 'https://azmilon.blogspot.com/favicon.ico' },
-        { name: 'সিট ফাউন্ডেশন রেজাল্ট', url: 'https://sitfoundation.blogspot.com/p/blog-page.html', img: 's.ico' },
+        { name: 'সিট ফাউন্ডেশন রেজাল্ট', url: 'https://sitfoundation.blogspot.com/p/blog-page.html', img: 'https://www.google.com/s2/favicons?domain=sitfoundation.blogspot.com' },
         { name: 'এমএসআইটি', url: 'http://msitbd.blogspot.com/', img: 'https://msitbd.blogspot.com/favicon.ico' },
-        { name: 'এমএসআইটি স্টডেন্ট একাউন্ট', url: 'https://docs.google.com/spreadsheets/d/1PVWV_ByuSVzcdjRkQLHB0T6jJz9p_uGYdhGLXXAxYVs/pubhtml', img: 'm.ico' },
+        { name: 'এমএসআইটি স্টডেন্ট একাউন্ট', url: 'https://docs.google.com/spreadsheets/d/1PVWV_ByuSVzcdjRkQLHB0T6jJz9p_uGYdhGLXXAxYVs/pubhtml', img: 'https://www.google.com/s2/favicons?domain=docs.google.com' },
     ];
 
     const hostingLinks = [
         { name: 'গুগল ড্রাইভ', url: 'https://drive.google.com', img: 'https://www.google.com/s2/favicons?domain=drive.google.com' },
         { name: 'ওয়ান ড্রাইভ', url: 'https://onedrive.live.com', img: 'https://www.google.com/s2/favicons?domain=onedrive.live.com' },
-        { name: 'প্রম্পট', url: 'https://azmilon.blogspot.com/2026/04/blog-post.html', img: 'p.ico' },
+        { name: 'প্রম্পট', url: 'https://azmilon.blogspot.com/2026/04/blog-post.html', img: 'https://www.google.com/s2/favicons?domain=azmilon.blogspot.com' },
         { name: 'We transfer', url: 'https://wetransfer.com', img: 'https://www.google.com/s2/favicons?domain=wetransfer.com' },
-        { name: 'file.io', url: 'https://www.file.io', img: 'f.ico' },
+        { name: 'file.io', url: 'https://www.file.io', img: 'https://www.google.com/s2/favicons?domain=file.io' },
         { name: 'গিটহাব', url: 'https://github.com/milon4ms/neemoil', img: 'https://github.com/favicon.ico' },
         { name: 'ফ্রিডোমেইন', url: 'https://freedns.afraid.org/subdomain', img: 'https://www.google.com/s2/favicons?domain=freedns.afraid.org' },
         { name: 'infinityfree', url: 'https://www.infinityfree.com', img: 'https://www.google.com/s2/favicons?domain=infinityfree.com' },
@@ -224,43 +222,41 @@
     const businessLinks = [
         { name: 'নির্ভীক বাজার-মু', url: 'https://nirvikbazar.mooo.com', img: 'https://nirvikbazar.mooo.com/favicon.ico' },
         { name: 'নির্ভীক নিমতেল', url: 'https://neemoil.mooo.com/', img: 'https://neemoil.mooo.com/favicon.ico' },
-        { name: 'নির্ভীক বাজার old', url: 'https://nirvikbazar.kesug.com/', img: 'n.ico' },
+        { name: 'নির্ভীক বাজার old', url: 'https://nirvikbazar.kesug.com/', img: 'https://www.google.com/s2/favicons?domain=nirvikbazar.kesug.com' },
         { name: 'ইভেন্ট ম্যানেজার', url: 'https://eventsmanager.facebook.com/events_manager2/list/dataset/3774300972716166/overview?business_id=681199151252789&nav_source#', img: 'https://facebook.com/favicon.ico' },
         { name: 'এ্যড ম্যানেজার', url: 'https://adsmanager.facebook.com', img: 'https://facebook.com/favicon.ico' },
         { name: 'DropShipping', url: '#', img: 'https://www.google.com/s2/favicons?domain=www.dropshipping.com.bd' },
         { name: 'ShopBase BD', url: 'https://www.shopbase.com', img: 'https://www.google.com/s2/favicons?domain=shopbasebd.com' },
         { name: 'goodearnbd', url: 'https://goodearnbd.com/customer/reselling/index', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' }
     ];
-        const educationsLinks = [
+    
+    const educationsLinks = [
         { name: 'আইপিইআইএমএস', url: 'https://ipemis.dpe.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=ipemis.dpe.gov.bd' },
         { name: 'প্রাথমিক শিক্ষা অধিদপ্তর', url: 'http://dpe.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=dpe.gov.bd' },
         { name: 'শিক্ষক কল্যাণ ট্রাস্ট', url: 'https://twtms.dpe.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=twtms.dpe.gov.bd' },
         { name: 'গাইড বই ডাউনলোড', url: 'https://www.abswer.com/', img: 'https://www.google.com/s2/favicons?domain=abswer.com' },
         { name: 'দৈনিক শিক্ষা', url: 'https://www.dainikshiksha.com/', img: 'https://www.google.com/s2/favicons?domain=dainikshiksha.com' },
-        { name: 'মুক্তপাঠ', url: 'https://muktopaath.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=www.dropshipping.com.bd' },
+        { name: 'মুক্তপাঠ', url: 'https://muktopaath.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=muktopaath.gov.bd' },
         { name: 'মাধ্যমিক ও উচ্চশিক্ষা', url: 'https://dshe.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=dshe.gov.bd' },
         { name: 'EMIS', url: 'https://emis.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=emis.gov.bd' },
-             { name: 'শিক্ষাক্রম ও পাঠ্যপুস্তক', url: 'https://nctb.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=nctb.gov.bd' },
-             { name: 'NTRCA', url: 'https://ntrca.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=goodearnbd.com' },
-             { name: 'রেজাল্টের ওয়েব', url: 'https://eboardresults.com/v2/home', img: 'https://www.google.com/s2/favicons?domain=eboardresults.com' },
-             { name: 'Teachers Portal', url: 'https://www.teachers.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=teachers.gov.bd' },
-             { name: 'ডিজিটাল শিক্ষা', url: 'http://digitalcontent.ictd.gov.bd/index.php/tutorial/digitalcontent', img: 'https://www.google.com/s2/favicons?domain=digitalcontent.ictd.gov.bd' },
+        { name: 'শিক্ষাক্রম ও পাঠ্যপুস্তক', url: 'https://nctb.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=nctb.gov.bd' },
+        { name: 'NTRCA', url: 'https://ntrca.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=ntrca.gov.bd' },
+        { name: 'রেজাল্টের ওয়েব', url: 'https://eboardresults.com/v2/home', img: 'https://www.google.com/s2/favicons?domain=eboardresults.com' },
+        { name: 'Teachers Portal', url: 'https://www.teachers.gov.bd/', img: 'https://www.google.com/s2/favicons?domain=teachers.gov.bd' },
+        { name: 'ডিজিটাল শিক্ষা', url: 'http://digitalcontent.ictd.gov.bd/index.php/tutorial/digitalcontent', img: 'https://www.google.com/s2/favicons?domain=digitalcontent.ictd.gov.bd' },
     ];
 
-    // ৩. বিনোদন ট্যাব (আপনার নতুন নির্দেশনা অনুযায়ী)
+    // বিনোদন ট্যাব
     const tvLinks = [
         { name: 'JagoBD', url: 'https://www.jagobd.com/', img: 'https://www.jagobd.com/favicon.ico' },
         { name: 'Toffee', url: 'https://toffeelive.com/en/live', img: 'https://www.google.com/s2/favicons?domain=toffeelive.com' },
         { name: 'BTV', url: 'https://www.btvlive.gov.bd/channel/BTV', img: 'https://www.google.com/s2/favicons?domain=btvlive.gov.bd' },
         { name: 'Somoynews', url: 'https://www.somoynews.tv/tv', img: 'https://www.google.com/s2/favicons?domain=somoynews.tv' },
         { name: 'All Indian', url: 'https://www.yupptv.com/livetv', img: 'https://www.google.com/s2/favicons?domain=yupptv.com' },
-        
-        { name: 'BDIPTV', url: 'http://tv.bdiptv.net/', img: 'https://www.google.com/s2/favicons?domain=geo.tv' },
-        { name: 'CTG IPTV', url: 'https://ctgiptv.com/', img: 'https://www.google.com/s2/favicons?domain=hum.tv' },
-        { name: 'IPTV IDN', url: 'http://iptvidn.com/', img: 'https://www.google.com/s2/favicons?domain=ptv.com.pk' },
+        { name: 'BDIPTV', url: 'http://tv.bdiptv.net/', img: 'https://www.google.com/s2/favicons?domain=tv.bdiptv.net' },
+        { name: 'CTG IPTV', url: 'https://ctgiptv.com/', img: 'https://www.google.com/s2/favicons?domain=ctgiptv.com' },
+        { name: 'IPTV IDN', url: 'http://iptvidn.com/', img: 'https://www.google.com/s2/favicons?domain=iptvidn.com' },
         { name: 'tvgarden', url: 'https://tvgarden.net/watch-live/', img: 'https://www.google.com/s2/favicons?domain=tvgarden.net' },
-       
-        { name: 'Al Jazeera', url: 'https://www.aljazeera.com/live', img: 'https://www.aljazeera.com/favicon.ico' },
         { name: 'France 24', url: 'https://www.france24.com/en/live', img: 'https://www.france24.com/favicon.ico' },
         { name: 'Sky News', url: 'https://news.sky.com/watch-live', img: 'https://news.sky.com/favicon.ico' },
         { name: 'NHK World', url: 'https://www3.nhk.or.jp/nhkworld/en/live/', img: 'https://www3.nhk.or.jp/favicon.ico' },
@@ -269,7 +265,6 @@
         { name: 'CGTN', url: 'https://www.cgtn.com/live', img: 'https://www.cgtn.com/favicon.ico' },
         { name: 'Euronews', url: 'https://www.euronews.com/live', img: 'https://www.euronews.com/favicon.ico' },
         { name: 'TRT World', url: 'https://www.trtworld.com/live', img: 'https://www.trtworld.com/favicon.ico' },
-        
     ];
 
     const radioLinks = [
@@ -280,26 +275,21 @@
         { name: 'বেতার-রংপুর', url: 'http://as1.digitalsynapsebd.com:8622/index.html?sid=1', img: 'https://www.bbc.co.uk/favicon.ico' },
         { name: 'BBC World', url: 'https://www.bbc.co.uk/sounds/play/live:bbc_world_service', img: 'https://www.bbc.co.uk/favicon.ico' },
         { name: 'Radio Foorti', url: 'http://radiofoorti.fm/', img: 'http://radiofoorti.fm/favicon.ico' },
-     { name: '92.7 Big FM', url: 'https://www.radioindia.in/927-big-fm', img: 'https://www.radioindia.in/favicon.ico' },
-{ name: 'Aaj Tak Radio', url: 'https://onlineradiofm.in/language/hindi', img: 'https://onlineradiofm.in/favicon.ico' },
-{ name: 'AIR FM Gold', url: 'https://www.radioindia.in/fm-gold-kolkata', img: 'https://www.radioindia.in/favicon.ico' },
-{ name: 'Radio Mirchi 98.3 Kolkata', url: 'https://radiobarfi.com/station/radio-mirchi-98-3-fm-kolkata/', img: 'https://radiobarfi.com/favicon.ico' },
-{ name: 'AIR FM Rainbow Kolkata', url: 'https://onlineradiofm.in/west-bengal/kolkata/fm-rainbow', img: 'https://onlineradiofm.in/favicon.ico' },
-{ name: 'FM Gold Kolkata 100.2', url: 'https://www.radioindia.in/fm-gold-kolkata', img: 'https://www.radioindia.in/favicon.ico' },
-{ name: 'AIR Kolkata Geetanjali', url: 'https://www.radioindialive.com/air-kolkata-geetanjali-live-all-india-radio', img: 'https://www.radioindialive.com/favicon.ico' },
-{ name: 'Hot FM 105 Pakistan', url: 'https://www.hotfm.com.pk/', img: 'https://www.hotfm.com.pk/favicon.ico' },
-{ name: 'FM 101 Pakistan', url: 'https://onlineradiofm.in/stations/fm-101-islamabad', img: 'https://onlineradiofm.in/favicon.ico' },
-{ name: 'FM 101 News Pakistan', url: 'https://radio.gov.pk/live-streaming', img: 'https://radio.gov.pk/favicon.ico' },
-{ name: 'ARY News Radio', url: 'https://mytuner-radio.com/radio/ary-news-503356/', img: 'https://mytuner-radio.com/favicon.ico' },
-{ name: 'iHeart Top Hits USA', url: 'https://www.iheart.com/live/country/US/', img: 'https://www.iheart.com/favicon.ico' },
-{ name: 'Hot 97 Style USA', url: 'https://www.fmradiofree.com/', img: 'https://www.fmradiofree.com/favicon.ico' },
-{ name: 'FOX News Radio USA', url: 'https://www.fmradiofree.com/', img: 'https://www.fmradiofree.com/favicon.ico' },
-{ name: 'NPR News USA', url: 'https://onlineradiobox.com/us/', img: 'https://onlineradiobox.com/favicon.ico' },
-{ name: 'Asia FM China Hits', url: 'https://onlineradiobox.com/cn/', img: 'https://onlineradiobox.com/favicon.ico' },
-{ name: 'Shanghai Dynamic FM', url: 'https://onlineradiobox.com/cn/', img: 'https://onlineradiobox.com/favicon.ico' },
-{ name: 'CGTN Radio China', url: 'https://radio.cgtn.com/', img: 'https://radio.cgtn.com/favicon.ico' },
-{ name: 'China News Radio', url: 'https://onlineradiobox.com/cn/', img: 'https://onlineradiobox.com/favicon.ico' }
-        
+        { name: '92.7 Big FM', url: 'https://www.radioindia.in/927-big-fm', img: 'https://www.radioindia.in/favicon.ico' },
+        { name: 'Aaj Tak Radio', url: 'https://onlineradiofm.in/language/hindi', img: 'https://onlineradiofm.in/favicon.ico' },
+        { name: 'AIR FM Gold', url: 'https://www.radioindia.in/fm-gold-kolkata', img: 'https://www.radioindia.in/favicon.ico' },
+        { name: 'Radio Mirchi 98.3 Kolkata', url: 'https://radiobarfi.com/station/radio-mirchi-98-3-fm-kolkata/', img: 'https://radiobarfi.com/favicon.ico' },
+        { name: 'AIR FM Rainbow Kolkata', url: 'https://onlineradiofm.in/west-bengal/kolkata/fm-rainbow', img: 'https://onlineradiofm.in/favicon.ico' },
+        { name: 'FM Gold Kolkata 100.2', url: 'https://www.radioindia.in/fm-gold-kolkata', img: 'https://www.radioindia.in/favicon.ico' },
+        { name: 'AIR Kolkata Geetanjali', url: 'https://www.radioindialive.com/air-kolkata-geetanjali-live-all-india-radio', img: 'https://www.radioindialive.com/favicon.ico' },
+        { name: 'Hot FM 105 Pakistan', url: 'https://www.hotfm.com.pk/', img: 'https://www.hotfm.com.pk/favicon.ico' },
+        { name: 'FM 101 Pakistan', url: 'https://onlineradiofm.in/stations/fm-101-islamabad', img: 'https://onlineradiofm.in/favicon.ico' },
+        { name: 'FM 101 News Pakistan', url: 'https://radio.gov.pk/live-streaming', img: 'https://radio.gov.pk/favicon.ico' },
+        { name: 'ARY News Radio', url: 'https://mytuner-radio.com/radio/ary-news-503356/', img: 'https://mytuner-radio.com/favicon.ico' },
+        { name: 'iHeart Top Hits USA', url: 'https://www.iheart.com/live/country/US/', img: 'https://www.iheart.com/favicon.ico' },
+        { name: 'Hot 97 Style USA', url: 'https://www.fmradiofree.com/', img: 'https://www.fmradiofree.com/favicon.ico' },
+        { name: 'FOX News Radio USA', url: 'https://www.fmradiofree.com/', img: 'https://www.fmradiofree.com/favicon.ico' },
+        { name: 'NPR News USA', url: 'https://onlineradiobox.com/us/', img: 'https://onlineradiobox.com/favicon.ico' }
     ];
 
     const movieLinks = [
@@ -308,10 +298,10 @@
         { name: 'CandyBD', url: 'http://candybd.net/', img: 'https://www.google.com/s2/favicons?domain=candybd.net' },
         { name: 'FTP 103', url: 'http://103.58.73.6/', img: '🔗' },
         { name: 'Internet Archive', url: 'https://archive.org/details/movies', img: 'https://archive.org/favicon.ico' },
-        { name: 'Youtube download', url: 'https://video.genyt.net/', img: 'https://pluto.tv/favicon.ico' },
-        { name: 'Video Download', url: 'https://en1.savefrom.net/17Bb/', img: 'https://www.crackle.com/favicon.ico' },
-        { name: 'বই ডাউনলোড', url: 'https://www.amarboi.com/', img: 'https://www.popcornflix.com/favicon.ico' },
-        { name: 'Apps Download', url: 'https://www.apk4fun.com/', img: 'https://www.vudu.com/favicon.ico' },
+        { name: 'Youtube download', url: 'https://video.genyt.net/', img: 'https://www.google.com/s2/favicons?domain=video.genyt.net' },
+        { name: 'Video Download', url: 'https://en1.savefrom.net/17Bb/', img: 'https://www.google.com/s2/favicons?domain=savefrom.net' },
+        { name: 'বই ডাউনলোড', url: 'https://www.amarboi.com/', img: 'https://www.google.com/s2/favicons?domain=amarboi.com' },
+        { name: 'Apps Download', url: 'https://www.apk4fun.com/', img: 'https://www.google.com/s2/favicons?domain=apk4fun.com' },
         { name: 'Plex Free', url: 'https://www.plex.tv/watch-free/', img: 'https://www.plex.tv/favicon.ico' },
         { name: 'Kanopy', url: 'https://www.kanopy.com/', img: 'https://www.kanopy.com/favicon.ico' },
         { name: 'Hoopla', url: 'https://www.hoopladigital.com/', img: 'https://www.hoopladigital.com/favicon.ico' },
@@ -327,25 +317,15 @@
         { name: 'Goku.to', url: 'https://goku.to/', img: 'https://goku.to/favicon.ico' },
         { name: 'YesMovies', url: 'https://yesmovies.ag/', img: 'https://yesmovies.ag/favicon.ico' },
         { name: 'BDeBooks Bengali PDF', url: 'https://bdebooks.com/', img: 'https://bdebooks.com/favicon.ico' },
-{ name: 'eBanglaLibrary Books', url: 'https://www.ebanglalibrary.com/', img: 'https://www.ebanglalibrary.com/favicon.ico' },
-{ name: 'BanglaBook.org PDF', url: 'https://www.banglabook.org/', img: 'https://www.banglabook.org/favicon.ico' },
-{ name: 'Rabindranath Bangla Books', url: 'https://rabindranath.in/', img: 'https://rabindranath.in/favicon.ico' },
-{ name: 'Matrubharti Bengali Books', url: 'https://bengali.matrubharti.com/book/bengali', img: 'https://bengali.matrubharti.com/favicon.ico' },
-{ name: 'Google Play Store', url: 'https://play.google.com/store/apps', img: 'https://play.google.com/favicon.ico' },
-{ name: 'APKMirror Free Apps', url: 'https://www.apkmirror.com/', img: 'https://www.apkmirror.com/favicon.ico' },
-{ name: 'F-Droid Open Source Apps', url: 'https://f-droid.org/', img: 'https://f-droid.org/favicon.ico' },
-{ name: 'Uptodown Apps', url: 'https://en.uptodown.com/', img: 'https://en.uptodown.com/favicon.ico' },
-{ name: 'Aptoide Free Apps', url: 'https://en.aptoide.com/', img: 'https://en.aptoide.com/favicon.ico' },
-{ name: 'World-Newspapers.com', url: 'https://www.world-newspapers.com/', img: 'https://www.world-newspapers.com/favicon.ico' },
-{ name: 'OnlineNewspapers.com', url: 'https://onlinenewspapers.com/', img: 'https://onlinenewspapers.com/favicon.ico' },
-{ name: 'PressReader Free Papers', url: 'https://www.pressreader.com/newspapers?free=true', img: 'https://www.pressreader.com/favicon.ico' },
-{ name: 'The Guardian Newspaper', url: 'https://www.theguardian.com/', img: 'https://www.theguardian.com/favicon.ico' },
-{ name: 'BBC News', url: 'https://www.bbc.com/news', img: 'https://www.bbc.com/favicon.ico' },
-{ name: 'YT1s YouTube Downloader', url: 'https://yt1s.com/', img: 'https://yt1s.com/favicon.ico' },
-{ name: 'Y2Mate YouTube Downloader', url: 'https://www.y2mate.com/', img: 'https://www.y2mate.com/favicon.ico' },
-{ name: 'SaveFrom.net YouTube', url: 'https://en.savefrom.net/', img: 'https://en.savefrom.net/favicon.ico' },
-{ name: '4K Video Downloader', url: 'https://www.4kdownload.com/products/videodownloader', img: 'https://www.4kdownload.com/favicon.ico' },
-{ name: 'YTDown YouTube Downloader', url: 'https://app.ytdown.to/', img: 'https://app.ytdown.to/favicon.ico' }
+        { name: 'eBanglaLibrary Books', url: 'https://www.ebanglalibrary.com/', img: 'https://www.ebanglalibrary.com/favicon.ico' },
+        { name: 'BanglaBook.org PDF', url: 'https://www.banglabook.org/', img: 'https://www.banglabook.org/favicon.ico' },
+        { name: 'Rabindranath Bangla Books', url: 'https://rabindranath.in/', img: 'https://rabindranath.in/favicon.ico' },
+        { name: 'Matrubharti Bengali Books', url: 'https://bengali.matrubharti.com/book/bengali', img: 'https://bengali.matrubharti.com/favicon.ico' },
+        { name: 'Google Play Store', url: 'https://play.google.com/store/apps', img: 'https://play.google.com/favicon.ico' },
+        { name: 'APKMirror Free Apps', url: 'https://www.apkmirror.com/', img: 'https://www.apkmirror.com/favicon.ico' },
+        { name: 'F-Droid Open Source Apps', url: 'https://f-droid.org/', img: 'https://f-droid.org/favicon.ico' },
+        { name: 'Uptodown Apps', url: 'https://en.uptodown.com/', img: 'https://en.uptodown.com/favicon.ico' },
+        { name: 'Aptoide Free Apps', url: 'https://en.aptoide.com/', img: 'https://en.aptoide.com/favicon.ico' }
     ];
 
     const softwareLinks = [
@@ -363,7 +343,6 @@
         { name: 'TED Talks', url: 'https://www.ted.com/talks', img: 'https://www.ted.com/favicon.ico' },
         { name: 'Duolingo', url: 'https://www.duolingo.com/', img: 'https://www.duolingo.com/favicon.ico' },
         { name: 'Coursera', url: 'https://www.coursera.org/', img: 'https://www.coursera.org/favicon.ico' },
-        { name: 'Internet Archive', url: 'https://archive.org/', img: 'https://archive.org/favicon.ico' }
     ];
 
     function createCategoryHTML(catName, catIndex, links = null) {
@@ -377,14 +356,14 @@
         for(let i=0; i<Math.min(limit, displayLinks.length); i++) {
             let item = displayLinks[i];
             html += `<a href="${item.url}" class="link-item" target="_blank">
-                <div class="icon-box">${(item.img && item.img.length > 0) ? `<img src="${item.img}">` : '🔗'}</div>
+                <div class="icon-box">${(item.img && item.img.length > 0) ? `<img src="${item.img}" onerror="this.src='🔗'">` : '🔗'}</div>
                 <span>${item.name}</span>
             </a>`;
         }
 
         html += `<div class="link-item" onclick="toggleMore('more-${catIndex}')">
                 <div class="icon-box more-btn-box">📂</div>
-                <span>More</span>
+                <span>আরও</span>
             </div>
         </div>
         <div id="more-${catIndex}" class="more-items">`;
@@ -393,7 +372,7 @@
             for(let i=limit; i < displayLinks.length; i++) {
                 let item = displayLinks[i];
                 html += `<a href="${item.url}" class="link-item" target="_blank">
-                    <div class="icon-box">${(item.img && item.img.length > 1) ? `<img src="${item.img}">` : '🔗'}</div>
+                    <div class="icon-box">${(item.img && item.img.length > 0) ? `<img src="${item.img}" onerror="this.src='🔗'">` : '🔗'}</div>
                     <span>${item.name}</span>
                 </a>`;
             }
@@ -422,7 +401,7 @@
         c2 += `<div class="category"><div class="cat-title">নিজস্ব সংগ্রহ</div><div class="link-grid" id="personal-tab2"></div></div>`;
         tab2.innerHTML = c2;
 
-        // ট্যাব ৩ (বিনোদন - নতুন সাজানো)
+        // ট্যাব ৩ (বিনোদন)
         let tab3 = document.getElementById('tab3');
         let c3 = createCategoryHTML(`টিভি (লাইভ)`, `t3-tv`, tvLinks);
         c3 += createCategoryHTML(`রেডিও (লাইভ)`, `t3-radio`, radioLinks);
@@ -436,24 +415,28 @@
     }
 
     function openTab(evt, tabName) {
-        currentTab = tabName;
-        document.querySelectorAll(".content-section").forEach(s => s.style.display = "none");
+        document.querySelectorAll(".content-section").forEach(s => s.classList.remove("active"));
         document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
 
     function toggleMore(id) {
         document.getElementById(id).classList.toggle("show");
+        let moreBtn = event.currentTarget.querySelector('span');
+        if(moreBtn) {
+            moreBtn.innerText = document.getElementById(id).classList.contains("show") ? 'কম দেখুন' : 'আরও';
+        }
     }
 
     function addNewLink() {
         let name = prompt("লিংকের নাম:");
         let url = prompt("URL (http:// সহ):");
         if(name && url) {
-            let links = JSON.parse(localStorage.getItem(currentTab) || "[]");
-            links.push({name, url});
-            localStorage.setItem(currentTab, JSON.stringify(links));
+            let activeTab = document.querySelector(".content-section.active").id;
+            let links = JSON.parse(localStorage.getItem(activeTab) || "[]");
+            links.push({name, url, img: '🔗'});
+            localStorage.setItem(activeTab, JSON.stringify(links));
             loadPersonalLinks();
         }
     }
@@ -469,7 +452,7 @@
                         <div class="icon-box">🔗</div>
                         <span>${link.name}</span>
                     </a>
-                    <span class="delete-btn" onclick="deleteLink('${tabId}', ${index})">মুছে ফেলুন</span>
+                    <span class="delete-btn" onclick="deleteLink('${tabId}', ${index})">🗑️</span>
                 </div>
             `).join('');
         });
@@ -477,7 +460,7 @@
 
     function deleteLink(tabId, index) {
         if(confirm("আপনি কি এই লিংকটি মুছে ফেলতে চান?")) {
-            let links = JSON.parse(localStorage.getItem(tabId));
+            let links = JSON.parse(localStorage.getItem(tabId) || "[]");
             links.splice(index, 1);
             localStorage.setItem(tabId, JSON.stringify(links));
             loadPersonalLinks();
@@ -485,11 +468,15 @@
     }
 
     function toggleTheme() {
-        document.body.setAttribute('data-theme', 
-            document.body.getAttribute('data-theme') === 'dark' ? '' : 'dark'
-        );
+        let currentTheme = document.body.getAttribute('data-theme');
+        if(currentTheme === 'dark') {
+            document.body.removeAttribute('data-theme');
+        } else {
+            document.body.setAttribute('data-theme', 'dark');
+        }
     }
 
+    // পেজ লোড হলে init কল হবে
     init();
 </script>
 
